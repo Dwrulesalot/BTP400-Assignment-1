@@ -1,6 +1,6 @@
 //Author: Jonathan De Groot
 
-class Savings extends Account
+public class Savings extends Account
 {
   private float interestRate; //Annual interest rate of savings account
 
