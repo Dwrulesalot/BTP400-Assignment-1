@@ -75,7 +75,7 @@ public class Account{
 			if ( (acc2.fullName.equals(fullName)) &&
 			     (acc2.accountNum.equals(accountNum)) &&
 			     (acc2.accountBalance.equals(accountBalance)))
- 
+
 			     result = true;
 		}
 
@@ -84,11 +84,19 @@ public class Account{
 
 	//Two public methods
 	public boolean deposit( BigDecimal amount ){
-
+		if(amount>0){
+			accountBalance+=amount;
+			return true;
+		}
+		return false;
 	}
 
 	public boolean withdraw( BigDecimal amount ){
-
+		if(amount>0 && (accountBalance-amount)>0){
+			accountBalance-=amount;
+			return true;
+		}
+		return false;
 	}
 
 	//toString
