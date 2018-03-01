@@ -1,8 +1,8 @@
 import java.math;
 public class Account{
 	//Since I'm not explicitly calling these variables public, they should default to private
-	String fullName, accountNum;
-	BigDecimal accountBalance, startingBalance;
+	protected String fullName, accountNum;
+	protected BigDecimal accountBalance, startingBalance;
 
 
 	//Zero Argument Constructor
