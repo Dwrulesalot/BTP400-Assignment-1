@@ -19,20 +19,12 @@ public class Chequing extends Account
     serviceCharge = 0.25f;
   }
 
-  public boolean withdraw( BigDecimal amount ){
-    if(amount>0 && (accountBalance-amount)>0){
-      accountBalance-=amount;
-      return true;
-    }
-    return false;
-  }
-
+  //Deposit
   public boolean deposit(BigDecimal amount)
   {
     if(amount > 0)
     {
       accountBalance += amount; //add deposit to balance
-      accountBalance -= serviceCharge; //charge the service fee
       transactions.add(amount); //record the deposit in the ArrayList
       return true;
     }
@@ -40,15 +32,42 @@ public class Chequing extends Account
       return false;
   }
 
+  //Withdrawal
   public boolean withdraw(BigDecimal amount)
   {
     if(amount > 0 && (accountBalance - amount) > 0)
     {
-      accountBalance -= amount;
-      accountBalance -= serviceCharge;
-      transactions.add(amount * -1);
+      accountBalance -= amount; //deduct withdrawl from balance
+      accountBalance -= serviceCharge; //charge the service fee
+      transactions.add(amount * -1); //record the withdrawal as a negatuve number in the ArrayList
       return true;
     }
     else
       return false;
+    }
+
+  //Equals operator
+  public equals(Object acc)
+  {
+    boolean result = false;
+
+    if ( acc instanceof Account )
+    {
+      Account acc2 = (Account) acc;
+
+      if ( (acc2.fullName.equals(fullName)) &&
+           (acc2.accountNum.equals(accountNum)) &&
+           (acc2.accountBalance.equals(accountBalance)) &&
+           (acc2.serviceCharge.equals(serviceCharge))) &&
+           (acc2.transactions.equals(transactions))
+
+           result = true;
+    }
+    return result;
+  }
+
+  //TODO
+  public toString()
+
+
 }
