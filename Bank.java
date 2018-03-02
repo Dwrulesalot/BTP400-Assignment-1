@@ -79,24 +79,55 @@ public class Bank{
 	}
 	
 	//Three new public methods
-	public Account [ ] searchByAccountName( String accountName ){//wait wtf it wants me to return an array-list of accounts? can there be multiple accounts with the same accountName? look at when not tired.
-		if(!accountName.equals("") && !accountName.equals(null)){
-			
+	public Account [ ] searchByAccountName( String accountName ){//just re-used code from above, double check if logic holds
+		int isItEmpty=0;
+		
+		for(int i=0;i<accounts.size();i++){
+			if(accounts.get(i).getFullName().equals(accountName)){
+				isItEmpty++;
+			}
 		}
-		return null; //can I do this if the return type is Account?
+		
+		Account[] returnMe = new Account[isItEmpty];//supposed to return array with length zero if nothing is found?
+		
+		if(isItEmpty==0){
+			return returnMe;
+		}
+		
+		int index=0;
+		
+		for(int i=0;i<accounts.size();i++){
+			if(accounts.get(i).getFullName().equals(accountName)){
+				returnMe[index]=accounts.get(i);
+				index++;
+			}
+		}
+		
+		return returnMe;
 		
 	}
 	
 	public Account searchByAccountNumber( String accountNumber ){
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
-			
+			for(int i=0;i<accounts.size();i++){
+				if(accounts.get(i).getAccountNumber().equals(accountNumber)){
+					return accounts.get(i); //not sure if I can do this
+				}
+			}
 		}
 		return null;
 	}
 	
-	public public Account removeAccount( String accountNumber ){
+	public Account removeAccount( String accountNumber ){//remove an account but also return it? dumb but okay
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
-			
+			for(int i=0;i<accounts.size();i++){
+				if(accounts.get(i).getAccountNumber().equals(accountNumber)){
+					Account temp;
+					temp = accounts.get(i);//not sure if I can do this
+					accounts.remove(i);
+					return temp; 
+				}
+			}
 		}
 		return null;
 	}
