@@ -5,7 +5,7 @@ public class Savings extends Account
   private float interestRate; //Annual interest rate of savings account
 
   //3-arg constructor
-  public Savings(fN, aN, sB, iR)
+  public Savings(String fN, String aN, BigDecimal sB, float iR)//Daniel: Added variable types
   {
     super(fN, aN, sB); //call to Account 3-arg constructor
     interestRate = iR;
@@ -15,7 +15,7 @@ public class Savings extends Account
   public Savings()
   {
     super(); //call to Account 0-arg constructor
-    intrestRate = 0.3f;
+    intrestRate = 0.3f;//Daniel: not really sure you need the f there
   }
 
   //Equals operator

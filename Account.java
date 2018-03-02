@@ -1,6 +1,6 @@
 import java.math;
 public class Account{
-	//Since I'm not explicitly calling these variables public, they should default to private
+	
 	protected String fullName, accountNum;
 	protected BigDecimal accountBalance, startingBalance;
 
@@ -82,7 +82,7 @@ public class Account{
 		return result;
 	}
 
-	//Two public methods
+	//Two new public methods
 	public boolean deposit( BigDecimal amount ){
 		if(amount>0){
 			accountBalance+=amount;
@@ -99,7 +99,7 @@ public class Account{
 		return false;
 	}
 
-	//toString
+	//toString - to be edited?
 	public String toString() {
 		String superCoolString;
 		superCoolString = fullName + ", " + accountNum + ", " + accountBalance;
