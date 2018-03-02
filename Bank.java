@@ -22,7 +22,7 @@ public class Bank{
 		
 		
 	for(int i=0; i<accounts.size();i++){//could also use .contains
-			//if (accounts.get(i).equals(newAccount)){//only works if everthing equals the same value looking at the example he wants you to only check account #
+			//if (accounts.get(i).equals(newAccount)){//only works if everything equals the same value looking at the example he wants you to only check account #
 			if (accounts.get(i).getAccountNumber().equals(newAccount.getAccountNumber())){ 
 				return false;
 			}
@@ -41,7 +41,7 @@ public class Bank{
 			Bank bnk2 = (Bank) bnk;
 			
 			for (int i=0;i<accounts.size();i++){
-				if (bnk2.bankName.equals(bankName) && bnk2.accounts.equals(accounts)) {//uses built in arraylist .equals function
+				if (bnk2.bankName.equals(bankName) && bnk2.accounts.equals(accounts)) {//uses built in array-list .equals function
 					result = true;
 				}
 			}
@@ -77,6 +77,30 @@ public class Bank{
 		return returnMe;
 		
 	}
+	
+	//Three new public methods
+	public Account [ ] searchByAccountName( String accountName ){//wait wtf it wants me to return an array-list of accounts? can there be multiple accounts with the same accountName? look at when not tired.
+		if(!accountName.equals("") && !accountName.equals(null)){
+			
+		}
+		return null; //can I do this if the return type is Account?
+		
+	}
+	
+	public Account searchByAccountNumber( String accountNumber ){
+		if(!accountNumber.equals("") && !accountNumber.equals(null)){
+			
+		}
+		return null;
+	}
+	
+	public public Account removeAccount( String accountNumber ){
+		if(!accountNumber.equals("") && !accountNumber.equals(null)){
+			
+		}
+		return null;
+	}
+	
 	
 	//toString Method
 	public String toString() {
