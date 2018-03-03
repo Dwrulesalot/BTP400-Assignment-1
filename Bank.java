@@ -134,7 +134,7 @@ public class Bank{
 	
 	
 	//toString Method
-	public String toString() {
+	public String toString() {//not sure if the Welcome is needed, as we will be using this toString mainly to print out all accounts - check with menu choice 5 in BankingApp
 		String superCoolString;
 		superCoolString = "\n\n*** Welcome to the Bank of "+bankName+" ***"+"\nIt has "+accounts.size()+" accounts.";
 		for (int i=0; i<accounts.size(); i++){
