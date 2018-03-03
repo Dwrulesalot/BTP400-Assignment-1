@@ -26,7 +26,7 @@ public class BankingApp{
 				System.out.println("Please enter information(e.g. account type, name, account number, balance, interest rate)");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values
 			}
 			else if(menuChoice.equals("2")){
-				System.out.println();
+				System.out.println("");
 			}
 			else if(menuChoice.equals("3")){
 				
