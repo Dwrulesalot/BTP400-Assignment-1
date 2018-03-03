@@ -80,7 +80,11 @@ public class BankingApp{
 				System.out.println("Please enter the account number of the account you would like to close: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
 				input = Scanner.nextLine();// reads in rest of the line
 				
-				if(){
+				if(searchByAccountNumber(input.strip())!=null ){//assumes the return null in bank.java works
+					account alreadyDeleted = new Account(removeAccount(input.strip()));//I hope this works might need to do: yeet.removeAccount(input.strip())
+					
+						System.out.println("\n+ Account Deleted:");
+						System.out.println(alreadyDeleted);//need to code toString to print out like the example //will this work even if we don't know the type of account it is? - I certainly hope so
 					
 				}
 				else{
@@ -90,12 +94,27 @@ public class BankingApp{
 			
 			
 			else if(menuChoice.equals("3")){
-				
+				String input;
+				System.out.println("a. Deposit Money.");
+				System.out.println("b. Withdraw Money.\n");
+				input = Scanner.nextLine();
+				if(input.toLowerCase.equals("a")){//maybe add .strip() later if it works
+					System.out.println("Please enter the account number of the account you would like to update: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
+					input = Scanner.nextLine();// reads in rest of the line
+				}
+				else if(input.toLowerCase.equals("a")){//maybe add .strip() later if it works
+					
+				}
+				else{
+					System.out.println("*** FAILED: INVALID INPUT! ***\n");// Will return user to the main menu
+				}
 			}
 			
 			
 			else if(menuChoice.equals("4")){
-				
+				System.out.println("a. Search by account balance.");
+				System.out.println("b. Search by account name.");
+				System.out.println("c. Search by account number.\n");
 			}
 			
 			
