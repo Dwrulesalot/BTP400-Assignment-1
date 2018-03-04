@@ -1,4 +1,4 @@
-import java.math;
+import java.math.BigDecimal;
 public class Account{
 
 	protected String fullName, accountNum;
@@ -13,7 +13,7 @@ public class Account{
 	}
 
 	//Three Argument Constructor
-	public Account(String name, String aNum, int aBalance) {//example uses double but instructions say to use int
+	public Account(String name, String aNum, String aBalance) {//example uses double but instructions say to use int
 
 		//checks each entered value, if null or -1 is entered, enters that variable into "safe state"
 
@@ -23,8 +23,8 @@ public class Account{
 		if(aNum==null) {accountNum = "";}
 		else {accountNum = aNum;}
 
-		if(accountBalance==-1) {accountBalance = 0;}
-		else {accountBalance = aBalance;}
+		if(accountBalance.equals("-1")) {accountBalance.equals("0");}
+		else {accountBalance = new BigDecimal(aBalance);}
 
 	}
 
@@ -83,16 +83,16 @@ public class Account{
 
 	//Two new public methods
 	public boolean deposit( BigDecimal amount ){
-		if(amount>0){
-			accountBalance+=amount;
+		if(amount.intValue() > 0){
+			accountBalance.add(amount);
 			return true;
 		}
 		return false;
 	}
 
 	public boolean withdraw( BigDecimal amount ){
-		if(amount>0 && (accountBalance-amount)>0){
-			accountBalance-=amount;
+		if(amount.intValue() > 0 && (accountBalance.subtract(amount)).intValue() > 0){
+			accountBalance.subtract(amount);
 			return true;
 		}
 		return false;
@@ -101,7 +101,7 @@ public class Account{
 	//toString - to be edited?
 	public String toString() {
 		String superCoolString;
-		superCoolString = "number: " + accountNum + ", " + "name: " fullName + "\n"
+		superCoolString = "number: " + accountNum + ", " + "name: " + fullName + "\n"
 		+ "starting balance: " + "$" + startingBalance + ", " + "current balance: " + "$" + accountBalance + "\n";
 		return superCoolString;
 	}
