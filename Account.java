@@ -1,4 +1,9 @@
 import java.math.BigDecimal;
+/**
+ * @author Daniel Wierzbicki
+ *
+ */
+
 public class Account{
 
 	protected String fullName, accountNum;
@@ -13,6 +18,11 @@ public class Account{
 	}
 
 	//Three Argument Constructor
+	/**
+	 * @param name
+	 * @param aNum
+	 * @param aBalance
+	 */
 	public Account(String name, String aNum, String aBalance) {//example uses double but instructions say to use int
 
 		//checks each entered value, if null or -1 is entered, enters that variable into "safe state"
@@ -23,7 +33,7 @@ public class Account{
 		if(aNum==null) {accountNum = "";}
 		else {accountNum = aNum;}
 
-		if(accountBalance.equals("-1")) {accountBalance.equals("0");}
+		if(aBalance.equals("-1") || aBalance == null) {aBalance.equals("0");}
 		else {accountBalance = new BigDecimal(aBalance);}
 
 	}
@@ -31,16 +41,25 @@ public class Account{
 	//SETTERS
 
 	//Setter for fullName
+	/**
+	 * @param name
+	 */
 	public void setFullName(String name) {
 		fullName = name;
 	}
 
 	//Setter for accountNum
+	/**
+	 * @param num
+	 */
 	public void setAccountNumber(String num) {
 		accountNum = num;
 	}
 
 	//Setter for accountBalance
+	/**
+	 * @param balance
+	 */
 	public void setAccountBalance(BigDecimal balance) {
 		accountBalance = balance;
 	}
@@ -48,21 +67,33 @@ public class Account{
 	//GETTERS
 
 	//Getter for fullName
+	/**
+	 * @return
+	 */
 	public String getFullName() {
 		return fullName;
 	}
 
 	//Getter for accountNum
+	/**
+	 * @return
+	 */
 	public String getAccountNumber() {
 		return accountNum;
 	}
 
 	//Getter for accountBalance
+	/**
+	 * @return
+	 */
 	public BigDecimal getAccountBalance() {
 		return accountBalance;
 	}
 
 	// the equals() method
+    /* (non-Javadoc)
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
     public boolean equals( Object acc ) {
 
 		boolean result = false;
@@ -82,6 +113,10 @@ public class Account{
 	}
 
 	//Two new public methods
+	/**
+	 * @param amount
+	 * @return
+	 */
 	public boolean deposit( BigDecimal amount ){
 		if(amount.intValue() > 0){
 			accountBalance.add(amount);
@@ -90,6 +125,10 @@ public class Account{
 		return false;
 	}
 
+	/**
+	 * @param amount
+	 * @return
+	 */
 	public boolean withdraw( BigDecimal amount ){
 		if(amount.intValue() > 0 && (accountBalance.subtract(amount)).intValue() > 0){
 			accountBalance.subtract(amount);
@@ -99,6 +138,9 @@ public class Account{
 	}
 
 	//toString - to be edited?
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		String superCoolString;
 		superCoolString = "number: " + accountNum + ", " + "name: " + fullName + "\n"

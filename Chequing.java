@@ -1,7 +1,9 @@
 import java.math.BigDecimal;
 import java.util.ArrayList;
-
-//Author: Jonathan De Groot
+/**
+ * @author Jonathan De Groot
+ *
+ */
 
 public class Chequing extends Account
 {
@@ -10,21 +12,33 @@ public class Chequing extends Account
   private int totalServiceCharge; //counter for service charges
 
   //3-arg constructor
-  public Chequing(String fN, String aN, String sB, double sC)//Daniel: Added variable types
+  /**
+ * @param fN
+ * @param aN
+ * @param sB
+ * @param sC
+ */
+public Chequing(String fN, String aN, String sB, double sC)//Daniel: Added variable types
   {
     super(fN, aN, sB); //call to Account 3-arg constructor
     serviceCharge = new BigDecimal(sC);
   }
 
   //0-arg constructor
-  public Chequing()
+  /**
+ * 
+ */
+public Chequing()
   {
     super(); //call to Account 0-arg constructor
     serviceCharge = new BigDecimal(0.25);//Daniel: don't think f is needed
   }
 
   //Deposit
-  public boolean deposit(BigDecimal amount)
+  /* (non-Javadoc)
+ * @see Account#deposit(java.math.BigDecimal)
+ */
+public boolean deposit(BigDecimal amount)
   {
     if(amount.intValue() > 0)
     {
@@ -37,7 +51,10 @@ public class Chequing extends Account
   }
 
   //Withdrawal
-  public boolean withdraw(BigDecimal amount)
+  /* (non-Javadoc)
+ * @see Account#withdraw(java.math.BigDecimal)
+ */
+public boolean withdraw(BigDecimal amount)
   {
     if(amount.intValue() > 0 && (accountBalance.subtract(amount)).intValue() > 0)
     {
@@ -53,7 +70,10 @@ public class Chequing extends Account
     }
 
   //Equals operator
-  public boolean equals(Object acc)
+  /* (non-Javadoc)
+ * @see Account#equals(java.lang.Object)
+ */
+public boolean equals(Object acc)
   {
     boolean result = false;
 
@@ -73,7 +93,10 @@ public class Chequing extends Account
   }
 
   //toString
-  public String toString()
+  /* (non-Javadoc)
+ * @see Account#toString()
+ */
+public String toString()
   {
     super.toString();
     String superCoolString = "type: CHEQUING" + "\n"

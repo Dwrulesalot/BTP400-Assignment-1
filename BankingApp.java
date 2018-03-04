@@ -3,7 +3,14 @@ import java.lang.String;//lets us use str.split(","); and toLowerCase and .strip
 import java.math.BigDecimal;
 import java.util.Scanner;
 
+/**
+ * @author Daniel Wierzbicki
+ *
+ */
 public class BankingApp{
+	/**
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		String menuChoice= "";
@@ -14,16 +21,16 @@ public class BankingApp{
 		
 		loadBank(yeet);//populates the bank
 		
-		while (menuChoice.equals(6)){
+		while (!menuChoice.equals("6")){
 			
 			displayMenu("Jonathan & Daniel");
 			
 			menuChoice = scanner.next();//reads in next user input
 			
 			if(menuChoice.equals("1")){//am I doing this right?
-				String input;
+				
 				System.out.println("Please enter information(e.g. account type, name, account number, balance, interest rate): ");
-				input = scanner.nextLine();// reads in rest of the line
+				String input = scanner.next();// reads in rest of the line
 				
 				String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
 				
@@ -70,9 +77,9 @@ public class BankingApp{
 			
 			
 			else if(menuChoice.equals("2")){
-				String input;
+				
 				System.out.println("Please enter the account number of the account you would like to close: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-				input = scanner.nextLine();// reads in rest of the line
+				String input = scanner.next();// reads in rest of the line
 				
 				if(yeet.searchByAccountNumber(input.trim())!=null ){//assumes the return null in bank.java works	
 					System.out.println("\n+ Account Deleted:");
@@ -86,26 +93,25 @@ public class BankingApp{
 			
 			
 			else if(menuChoice.equals("3")){
-				String input; 
 				BigDecimal amount;//maybe make amount BigDecimal
 				
 				System.out.println("a. Deposit Money.");
 				System.out.println("b. Withdraw Money.\n");
 				
-				input = scanner.nextLine();
+				String input = scanner.next();
 				
 				if(input.toLowerCase().equals("a")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account number of the account you would like to make a deposit to: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					input = scanner.nextLine();// reads in rest of the line
+					String input2 = scanner.next();// reads in rest of the line
 					
 					
-					if(yeet.searchByAccountNumber(input.trim())!=null){
+					if(yeet.searchByAccountNumber(input2.trim())!=null){
 						System.out.println("Please enter the amount you would like to deposit: ");//gotta cast input into a BigDecimal for this to work
-						amount = new BigDecimal(scanner.nextLine());
+						amount = new BigDecimal(scanner.next());
 						
-						if(yeet.searchByAccountNumber(input.trim()).deposit(amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
+						if(yeet.searchByAccountNumber(input2.trim()).deposit(amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
 							System.out.println("\n+ Account Updated:");
-							displayAccount(yeet.searchByAccountNumber(input.trim()));
+							displayAccount(yeet.searchByAccountNumber(input2.trim()));
 						}
 						else{
 							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
@@ -119,15 +125,15 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().equals("b")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					input = scanner.nextLine();// reads in rest of the line
+					String input2 = scanner.next();// reads in rest of the line
 									
-					if(yeet.searchByAccountNumber(input.trim())!=null){
+					if(yeet.searchByAccountNumber(input2.trim())!=null){
 						System.out.println("Please enter the amount you would like to withdraw: ");//gotta cast input into a BigDecimal for this to work
-						amount = new BigDecimal(scanner.nextLine());
+						amount = new BigDecimal(scanner.next());
 						
-						if(yeet.searchByAccountNumber(input.trim()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
+						if(yeet.searchByAccountNumber(input2.trim()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
 							System.out.println("\n+ Account Updated:");
-							displayAccount(yeet.searchByAccountNumber(input.trim()));
+							displayAccount(yeet.searchByAccountNumber(input2.trim()));
 						}
 						else{
 							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
@@ -144,19 +150,18 @@ public class BankingApp{
 			
 			
 			else if(menuChoice.equals("4")){
-				String input;
 				
 				System.out.println("a. Search by account balance.");
 				System.out.println("b. Search by account name.");
 				System.out.println("c. Search by account number.\n");
 				
-				input = scanner.nextLine();
+				String input = scanner.next();
 				
 				if(input.toLowerCase().equals("a")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account balance of the accounts you're looking for: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					input = scanner.nextLine();
+					String input2 = scanner.next();
 					
-					Account [] accountsToRetrieve = yeet.searchByBalance(input);//added yeet.
+					Account [] accountsToRetrieve = yeet.searchByBalance(input2);//added yeet.
 					
 					if(accountsToRetrieve!=null){//no idea if this works
 						listAccounts(accountsToRetrieve);//new
@@ -169,9 +174,9 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().equals("b")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account name of the accounts you're looking for: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					input = scanner.nextLine();
+					String input2 = scanner.next();
 					
-					Account [] accountsToRetrieve = yeet.searchByAccountName(input);//added yeet.
+					Account [] accountsToRetrieve = yeet.searchByAccountName(input2);//added yeet.
 					
 					if(accountsToRetrieve!=null){//no idea if this works
 						listAccounts(accountsToRetrieve);//new
@@ -182,10 +187,10 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().equals("c")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					input = scanner.nextLine();// reads in rest of the line
+					String input2 = scanner.next();// reads in rest of the line
 							
-					if(yeet.searchByAccountNumber(input.trim())!=null){
-						displayAccount(yeet.searchByAccountNumber(input.trim()));
+					if(yeet.searchByAccountNumber(input2.trim())!=null){
+						displayAccount(yeet.searchByAccountNumber(input2.trim()));
 					}
 					else{
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE RETREIVED! ***\n");//account doesn't exist error
@@ -216,6 +221,9 @@ public class BankingApp{
 		}
 	}
 	//I'm very upset
+	/**
+	 * @param bank
+	 */
 	public static void loadBank(Bank bank){
 		Account newAccount1 = new GIC("John Doe", "D1234", "6000.00", 2, 1.5);
 		Account newAccount2 = new Chequing("John Doe", "E5678", "15000.00", 0.75);
@@ -231,6 +239,9 @@ public class BankingApp{
 		bank.addAccount(newAccount6);
 	}
 	//I hate everything
+	/**
+	 * @param bankName
+	 */
 	public static void displayMenu( String bankName ){
 		System.out.println("\n### Welcome to the Bank of "+bankName+" ###");
 		//System.out.println(getHour()+":"+getMinute()+ ); need to look at api and figure out how to get it in the format shown in example
@@ -244,10 +255,16 @@ public class BankingApp{
 		System.out.println("\nPlease enter your choice: ");
 	}
 	//Fucking end me //Literally useless
+	/**
+	 * @param account
+	 */
 	public static void displayAccount( Account account ){
 		System.out.println(account);
 	}
 	//these last two are fucking pointless they replace like a line of code each wtf
+	/**
+	 * @param listOfAccounts
+	 */
 	public static void listAccounts( Account [ ] listOfAccounts){
 		for (int i=0; i<listOfAccounts.length; i++){
 			System.out.println(listOfAccounts.length);

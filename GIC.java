@@ -1,14 +1,25 @@
 import java.math.BigDecimal;
 import java.lang.Math;
 
-//Author Jonathan De Groot
+/**
+ * @author Jonathan De Groot
+ *
+ */
+
 public class GIC extends Account
 {
   private double periodOfInvestment;
   private double interestRate;
 
   //3-arg constructor
-  public GIC(String fN, String aN, String sB, double pOI, double iR)
+  /**
+ * @param fN
+ * @param aN
+ * @param sB
+ * @param pOI
+ * @param iR
+ */
+public GIC(String fN, String aN, String sB, double pOI, double iR)
   {
     super(fN, aN, sB); //call to Account 3-arg constructor
     periodOfInvestment = pOI;
@@ -16,7 +27,10 @@ public class GIC extends Account
   }
 
   //0-arg constructor
-  public GIC()
+  /**
+ * 
+ */
+public GIC()
   {
     super(); //call to Account 0-arg constructor
     periodOfInvestment = 1;
@@ -24,15 +38,26 @@ public class GIC extends Account
   }
 
   //Deposit
-  public boolean deposit(String amount){// No transactions can be made on a GIC account
+  /**
+ * @param amount
+ * @return
+ */
+public boolean deposit(String amount){// No transactions can be made on a GIC account
 		return false;
   }
 
   //Withdrawal
-  public boolean withdraw(String amount){// No transactions can be made on a GIC account
+  /**
+ * @param amount
+ * @return
+ */
+public boolean withdraw(String amount){// No transactions can be made on a GIC account
 		return false;
     }
 
+	/**
+	 * @return
+	 */
 	public BigDecimal getBalanceAtMaturity(){
 		double futureBalance = Math.pow((getAccountBalance().doubleValue()*(1+interestRate)), periodOfInvestment);//pow returns a double and also expects a double, will this work? do I need to cast?
 		BigDecimal bd = new BigDecimal(futureBalance);
@@ -40,6 +65,9 @@ public class GIC extends Account
 	}
 
 	//Equals operator
+	/* (non-Javadoc)
+	 * @see Account#equals(java.lang.Object)
+	 */
 	public boolean equals(Object acc){
     boolean result = false;
 
@@ -58,9 +86,11 @@ public class GIC extends Account
   }
 
   //toString
-  public String toString()
+  /* (non-Javadoc)
+ * @see Account#toString()
+ */
+public String toString()
   {
-    super.toString();
     String superCoolString = "type: GIC" + "annual interest rate: " + interestRate + "%" + "\n" +
     "period of investment" + periodOfInvestment + " years" + "\n" +
     "new balance at maturity: " + "$" + getBalanceAtMaturity();

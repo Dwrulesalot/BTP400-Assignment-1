@@ -1,20 +1,35 @@
 import java.util.ArrayList;
 
+/**
+ * @author Daniel Wierzbicki
+ *
+ */
+
 public class Bank{
 	//ArrayList of accounts
 	private String bankName;
 	ArrayList<Account> accounts = new ArrayList<Account>();
 	
 	//Zero Argument Constructor
+	/**
+	 * 
+	 */
 	public Bank() {
 		bankName ="Seneca@York";
 	}
 	
 	//One Argument Constructor
+	/**
+	 * @param s
+	 */
 	public Bank(String s) {
 		bankName =s;
 	}
 	
+	/**
+	 * @param newAccount
+	 * @return
+	 */
 	public boolean addAccount( Account newAccount ){
 		if(newAccount == null){
 			return false;
@@ -32,6 +47,9 @@ public class Bank{
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	public boolean equals( Object bnk ) {
 
 		boolean result = false;
@@ -49,6 +67,10 @@ public class Bank{
 		return result;
 	}
 	
+	/**
+	 * @param balance
+	 * @return
+	 */
 	public Account[] searchByBalance(String balance){//maybe make it static Account[]?
 		
 		int isItEmpty=0;
@@ -79,6 +101,10 @@ public class Bank{
 	}
 	
 	//Three new public methods
+	/**
+	 * @param accountName
+	 * @return
+	 */
 	public Account [ ] searchByAccountName( String accountName ){//just re-used code from above, double check if logic holds
 		int isItEmpty=0;
 		
@@ -107,6 +133,10 @@ public class Bank{
 		
 	}
 	
+	/**
+	 * @param accountNumber
+	 * @return
+	 */
 	public Account searchByAccountNumber( String accountNumber ){
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
 			for(int i=0;i<accounts.size();i++){
@@ -118,6 +148,10 @@ public class Bank{
 		return null;
 	}
 	
+	/**
+	 * @param accountNumber
+	 * @return
+	 */
 	public Account removeAccount( String accountNumber ){//remove an account but also return it? dumb but okay
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
 			for(int i=0;i<accounts.size();i++){
@@ -134,6 +168,9 @@ public class Bank{
 	
 	
 	//toString Method
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {//not sure if the Welcome is needed, as we will be using this toString mainly to print out all accounts - check with menu choice 5 in BankingApp // also might want to update
 		String superCoolString;
 		superCoolString = "\n\n*** Welcome to the Bank of "+bankName+" ***"+"\nIt has "+accounts.size()+" accounts.";

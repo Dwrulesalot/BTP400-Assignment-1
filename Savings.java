@@ -1,25 +1,40 @@
-//Author: Jonathan De Groot
+/**
+ * @author Jonathan De Groot
+ *
+ */
 
 public class Savings extends Account
 {
   private double interestRate; //Annual interest rate of savings account
 
   //3-arg constructor
-  public Savings(String fN, String aN, String sB, double iR)
+  /**
+ * @param fN
+ * @param aN
+ * @param sB
+ * @param iR
+ */
+public Savings(String fN, String aN, String sB, double iR)
   {
     super(fN, aN, sB); //call to Account 3-arg constructor
     interestRate = iR;
   }
 
   //0-arg constructor
-  public Savings()
+  /**
+ * 
+ */
+public Savings()
   {
     super(); //call to Account 0-arg constructor
     interestRate = 0.3f;
   }
 
   //Equals operator
-  public boolean equals(Object acc)
+  /* (non-Javadoc)
+ * @see Account#equals(java.lang.Object)
+ */
+public boolean equals(Object acc)
   {
     boolean result = false;
 
@@ -39,7 +54,10 @@ public class Savings extends Account
   }
 
   //toString IMMA DO THIS LATER
-  public String toString()
+  /* (non-Javadoc)
+ * @see Account#toString()
+ */
+public String toString()
   {
     super.toString();
     String superCoolString;
