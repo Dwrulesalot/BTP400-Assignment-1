@@ -2,10 +2,10 @@
 
 public class Savings extends Account
 {
-  private float interestRate; //Annual interest rate of savings account
+  private double interestRate; //Annual interest rate of savings account
 
   //3-arg constructor
-  public Savings(String fN, String aN, BigDecimal sB, float iR)//Daniel: Added variable types
+  public Savings(String fN, String aN, String sB, double iR)
   {
     super(fN, aN, sB); //call to Account 3-arg constructor
     interestRate = iR;
@@ -15,22 +15,22 @@ public class Savings extends Account
   public Savings()
   {
     super(); //call to Account 0-arg constructor
-    intrestRate = 0.3f;//Daniel: not really sure you need the f there
+    interestRate = 0.3f;
   }
 
   //Equals operator
-  public equals(Object acc)
+  public boolean equals(Object acc)
   {
     boolean result = false;
 
-    if ( acc instanceof Account )
+    if ( acc instanceof Savings )
     {
-      Account acc2 = (Account) acc;
+      Savings acc2 = (Savings) acc;
 
       if ( (acc2.fullName.equals(fullName)) &&
            (acc2.accountNum.equals(accountNum)) &&
            (acc2.accountBalance.equals(accountBalance)) &&
-           (acc2.interestRate.equals(interestRate)))
+           (acc2.interestRate == interestRate))
 
            result = true;
     }

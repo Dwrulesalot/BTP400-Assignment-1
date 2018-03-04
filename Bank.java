@@ -49,12 +49,12 @@ public class Bank{
 		return result;
 	}
 	
-	public Account[] searchByBalance(int balance){//maybe make it static Account[]?
+	public Account[] searchByBalance(String balance){//maybe make it static Account[]?
 		
 		int isItEmpty=0;
 		
 		for(int i=0;i<accounts.size();i++){
-			if(accounts.get(i).getAccountBalance()== balance){
+			if(accounts.get(i).getAccountBalance().equals(balance)){
 				isItEmpty++;
 			}
 		}
@@ -68,7 +68,7 @@ public class Bank{
 		int index=0;
 		
 		for(int i=0;i<accounts.size();i++){
-			if(accounts.get(i).getAccountBalance()== balance){
+			if(accounts.get(i).getAccountBalance().equals(balance)){
 				returnMe[index]=accounts.get(i);
 				index++;
 			}
