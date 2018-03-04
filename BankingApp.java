@@ -32,11 +32,16 @@ public class BankingApp{
 				System.out.println("Please enter information(e.g. account type, name, account number, balance, interest rate): ");
 				String input = scanner.next();// reads in rest of the line
 				
-				String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
+				//String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
 				
-				if(info[0].toLowerCase().trim().equals("sav") || info[0].toLowerCase().trim().equals("savings") || info[0].trim().toLowerCase().equals("saving") ){//Will open Savings account strip() strips leading and tailing spaces
-					if(info.length==5){//checks if correct amount of info was inputed
-						Account newAccount = new Savings(info[1].trim(), info[2].trim(), info[3].trim(), Double.valueOf(info[4].trim()));
+				//if(info[0].toLowerCase().trim().equals("sav") || info[0].toLowerCase().trim().equals("savings") || info[0].trim().toLowerCase().equals("saving") ){//Will open Savings account strip() strips leading and tailing spaces
+				if(input.toLowerCase().trim().equals("sav") || input.toLowerCase().trim().equals("savings") || input.toLowerCase().trim().equals("saving") || input.toLowerCase().trim().equals("sav") || input.toLowerCase().trim().equals("savings") || input.toLowerCase().trim().equals("saving")){//Will open Savings account strip() strips leading and tailing spaces
+					input = scanner.nextLine();
+					String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
+					
+					
+					if(info.length==4){//checks if correct amount of info was inputed
+						Account newAccount = new Savings(info[0].trim(), info[1].trim(), info[2].trim(), Double.valueOf(info[3].trim()));
 						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
 						System.out.println("\n+ Account Opened:");
@@ -46,9 +51,13 @@ public class BankingApp{
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
 					}
 				}
-				else if(info[0].toLowerCase().trim().equals("gic") || info[0].toLowerCase().trim().equals("guaranteed investment certificate") ){//Will open GIC account
-					if(info.length==6){//checks if correct amount of info was inputed
-						Account newAccount = new GIC(info[1].trim(), info[2].trim(), info[3].trim(),  Double.valueOf(info[4].trim()),  Double.valueOf(info[5].trim()));// name newAccount can be reused as there's no way the if statements could both be run since it's an else if
+				else if(input.toLowerCase().trim().equals("gic") || input.toLowerCase().trim().equals("guaranteed investment certificate") || input.toLowerCase().trim().equals("gic,") || input.toLowerCase().trim().equals("guaranteed investment certificate,")){//Will open GIC account
+					input = scanner.nextLine();
+					String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
+					
+					
+					if(info.length==5){//checks if correct amount of info was inputed
+						Account newAccount = new GIC(info[0].trim(), info[1].trim(), info[2].trim(),  Double.valueOf(info[3].trim()),  Double.valueOf(info[4].trim()));// name newAccount can be reused as there's no way the if statements could both be run since it's an else if
 						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
 						System.out.println("\n+ Account Opened:");
@@ -58,9 +67,13 @@ public class BankingApp{
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
 					}
 				}
-				else if(info[0].toLowerCase().trim().equals("cheq") || info[0].toLowerCase().trim().equals("cheque") || info[0].toLowerCase().trim().equals("chequing")){//Will open Chequing account
-					if(info.length==5){//checks if correct amount of info was inputed
-						Account newAccount = new Chequing(info[1].trim(), info[2].trim(), info[3].trim(), Double.valueOf(info[4].trim()));
+				else if(input.toLowerCase().trim().equals("cheq") || input.toLowerCase().trim().equals("cheque") || input.toLowerCase().trim().equals("chequing") || input.toLowerCase().trim().equals("cheq,") || input.toLowerCase().trim().equals("cheque,") || input.toLowerCase().trim().equals("chequing,")){//Will open Chequing account
+					input = scanner.nextLine();
+					String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
+					
+					
+					if(info.length==4){//checks if correct amount of info was inputed
+						Account newAccount = new Chequing(info[0].trim(), info[1].trim(), info[2].trim(), Double.valueOf(info[3].trim()));
 						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
 						System.out.println("\n+ Account Opened:");
@@ -73,6 +86,8 @@ public class BankingApp{
 				else{
 					System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// basically means improper input and will return user to the main menu
 				}
+				String errorFixer = scanner.nextLine();//HEY IT ACTUALLY CATCHS THE ERROR LOL, ALSO PLEASE ACTUALLY FIX THIS ERROR
+				
 			}
 			
 			
