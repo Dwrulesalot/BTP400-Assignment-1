@@ -59,9 +59,10 @@ public boolean equals(Object acc)
  */
 public String toString()
   {
-    super.toString();
-    String superCoolString;
-    superCoolString = "type: SAVINGS" + "\n" + "annual interest rate: " + interestRate + "%";
-    return superCoolString;
+	StringBuffer str = new StringBuffer(super.toString());
+	str.append("type: SAVINGS" + "\n" + "annual interest rate: " + interestRate + "%");
+	
+    String str2 = new String(str); 
+    return str2;
   }
 }

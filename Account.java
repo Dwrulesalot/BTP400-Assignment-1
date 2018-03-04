@@ -19,9 +19,9 @@ public class Account{
 
 	//Three Argument Constructor
 	/**
-	 * @param name
-	 * @param aNum
-	 * @param aBalance
+	 * @param name full name of client
+	 * @param aNum account number
+	 * @param aBalance account balance / current balance
 	 */
 	public Account(String name, String aNum, String aBalance) {//example uses double but instructions say to use int
 
@@ -42,7 +42,7 @@ public class Account{
 
 	//Setter for fullName
 	/**
-	 * @param name
+	 * @param name full name
 	 */
 	public void setFullName(String name) {
 		fullName = name;
@@ -50,7 +50,7 @@ public class Account{
 
 	//Setter for accountNum
 	/**
-	 * @param num
+	 * @param num account number
 	 */
 	public void setAccountNumber(String num) {
 		accountNum = num;
@@ -142,8 +142,7 @@ public class Account{
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString() {
-		String superCoolString;
-		superCoolString = "number: " + accountNum + ", " + "name: " + fullName + "\n"
+		String superCoolString = "number: " + accountNum + ", " + "name: " + fullName + "\n"
 		+ "starting balance: " + "$" + startingBalance + ", " + "current balance: " + "$" + accountBalance + "\n";
 		return superCoolString;
 	}

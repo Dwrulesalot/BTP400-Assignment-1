@@ -76,7 +76,7 @@ public class Bank{
 		int isItEmpty=0;
 		
 		for(int i=0;i<accounts.size();i++){
-			if(accounts.get(i).getAccountBalance().equals(balance)){
+			if(accounts.get(i).getAccountBalance().toString().equals(balance)){
 				isItEmpty++;
 			}
 		}
@@ -90,7 +90,7 @@ public class Bank{
 		int index=0;
 		
 		for(int i=0;i<accounts.size();i++){
-			if(accounts.get(i).getAccountBalance().equals(balance)){
+			if(accounts.get(i).getAccountBalance().toString().equals(balance)){
 				returnMe[index]=accounts.get(i);
 				index++;
 			}

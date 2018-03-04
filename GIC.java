@@ -59,7 +59,7 @@ public boolean withdraw(String amount){// No transactions can be made on a GIC a
 	 * @return
 	 */
 	public BigDecimal getBalanceAtMaturity(){
-		double futureBalance = Math.pow((getAccountBalance().doubleValue()*(1+interestRate)), periodOfInvestment);//pow returns a double and also expects a double, will this work? do I need to cast?
+		double futureBalance = Math.pow((getAccountBalance().doubleValue()*(interestRate)), periodOfInvestment);//pow returns a double and also expects a double, will this work? do I need to cast?
 		BigDecimal bd = new BigDecimal(futureBalance);
 		return bd;
 	}
@@ -91,10 +91,13 @@ public boolean withdraw(String amount){// No transactions can be made on a GIC a
  */
 public String toString()
   {
-    String superCoolString = "type: GIC" + "annual interest rate: " + interestRate + "%" + "\n" +
-    "period of investment" + periodOfInvestment + " years" + "\n" +
-    "new balance at maturity: " + "$" + getBalanceAtMaturity();
-    return superCoolString;
+	StringBuffer str = new StringBuffer(super.toString());
+    str.append("type: GIC" + "annual interest rate: " + interestRate + "%" + "\n" +
+    "period of investment " + (int)periodOfInvestment + " years" + "\n" +
+    "new balance at maturity: " + "$" + getBalanceAtMaturity());
+    
+    String str2 = new String(str); 
+    return str2;
   }
 
 }

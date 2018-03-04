@@ -98,12 +98,13 @@ public boolean equals(Object acc)
  */
 public String toString()
   {
-    super.toString();
-    String superCoolString = "type: CHEQUING" + "\n"
+	StringBuffer str = new StringBuffer(super.toString());
+    str.append("type: CHEQUING" + "\n"
     + "service charge: " + "$" + serviceCharge + "\n"
     + "number of transactions: " + transactions.size() + "\n"
-    + "total amount of service charge: " + "$" + (totalServiceCharge * serviceCharge.intValue());
-
-    return superCoolString;
+    + "total amount of service charge: " + "$" + (totalServiceCharge * serviceCharge.intValue()));
+   
+    String str2 = new String(str); 
+    return str2;
   }
 }

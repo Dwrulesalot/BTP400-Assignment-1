@@ -282,7 +282,7 @@ public class BankingApp{
 	 */
 	public static void listAccounts( Account [ ] listOfAccounts){
 		for (int i=0; i<listOfAccounts.length; i++){
-			System.out.println(listOfAccounts.length);
+			System.out.println(listOfAccounts[i] + "\n");
 		}
 	}
 	
