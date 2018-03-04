@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;// not sure if .LocalDateTime is needed of just use java.time
+import java.time.format.DateTimeFormatter;//kill me
 import java.lang.String;//lets us use str.split(","); and toLowerCase and .strip()
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -260,6 +261,10 @@ public class BankingApp{
 	public static void displayMenu( String bankName ){
 		System.out.println("\n### Welcome to the Bank of "+bankName+" ###");
 		//System.out.println(getHour()+":"+getMinute()+ ); need to look at api and figure out how to get it in the format shown in example
+		LocalDate date = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a MMMMMMMMM, dd uuuu");
+		String text = date.format(formatter);
+		System.out.println(text);
 		
 		System.out.println("\n1. Open an account");
 		System.out.println("2. Close an account");
