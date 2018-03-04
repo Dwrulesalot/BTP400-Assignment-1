@@ -30,12 +30,13 @@ public class GIC extends Account
 
   //Withdrawal
   public boolean withdraw(String amount){// No transactions can be made on a GIC account
-		return false;
+		return false;s
     }
 
 	public BigDecimal getBalanceAtMaturity(){
 		BigDecimal futureBalance;
-		futureBalance = pow((getAccountBalance().doubleValue()*(1+interestRate)), periodOfInvestment);//pow returns a double and also expects a double, will this work? do I need to cast?
+		double bop = (getAccountBalance().doubleValue()*(1+interestRate))
+		futureBalance = pow(bop, periodOfInvestment);//pow returns a double and also expects a double, will this work? do I need to cast?
 
 		return futureBalance;
 
