@@ -42,7 +42,7 @@ public boolean deposit(BigDecimal amount)
   {
     if(amount.intValue() > 0)
     {
-	accountBalance.add(amount); //add deposit to balance  //Daniel: could also use the setters created in account rather than making the variables protected then using them here like you did. ie. setAccountBalance(accountBalance+amount)
+      accountBalance = accountBalance.add(amount); //add deposit to balance  //Daniel: could also use the setters created in account rather than making the variables protected then using them here like you did. ie. setAccountBalance(accountBalance+amount)
       transactions.add(amount.toString()); //record the deposit in the ArrayList
       return true;
     }
@@ -58,8 +58,8 @@ public boolean withdraw(BigDecimal amount)
   {
     if(amount.intValue() > 0 && (accountBalance.subtract(amount)).intValue() > 0)
     {
-      accountBalance.subtract(amount); //deduct withdrawal from balance //Daniel: could also use the setters created in account rather than making the variables protected then using them here like you did.
-      accountBalance.subtract(serviceCharge); //charge the service fee
+      accountBalance = accountBalance.subtract(amount); //deduct withdrawal from balance //Daniel: could also use the setters created in account rather than making the variables protected then using them here like you did.
+      accountBalance = accountBalance.subtract(serviceCharge); //charge the service fee
       int why = amount.intValue() * -1;
       transactions.add(Integer.toString(why)); //record the withdrawal as a negative number in the ArrayList //Daniel: Should serviceCharge be included in amount?
       totalServiceCharge++;
@@ -102,7 +102,7 @@ public String toString()
     str.append("type: CHEQUING" + "\n"
     + "service charge: " + "$" + serviceCharge + "\n"
     + "number of transactions: " + transactions.size() + "\n"
-    + "total amount of service charge: " + "$" + (totalServiceCharge * serviceCharge.intValue()));
+    + "total amount of service charge: " + "$" + (totalServiceCharge * serviceCharge.doubleValue()));
    
     String str2 = new String(str); 
     return str2;

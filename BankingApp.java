@@ -35,7 +35,7 @@ public class BankingApp{
 				//String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
 				
 				//if(info[0].toLowerCase().trim().equals("sav") || info[0].toLowerCase().trim().equals("savings") || info[0].trim().toLowerCase().equals("saving") ){//Will open Savings account strip() strips leading and tailing spaces
-				if(input.toLowerCase().trim().equals("sav") || input.toLowerCase().trim().equals("savings") || input.toLowerCase().trim().equals("saving") || input.toLowerCase().trim().equals("sav") || input.toLowerCase().trim().equals("savings") || input.toLowerCase().trim().equals("saving")){//Will open Savings account strip() strips leading and tailing spaces
+				if(input.toLowerCase().trim().equals("sav") || input.toLowerCase().trim().equals("savings") || input.toLowerCase().trim().equals("saving") || input.toLowerCase().trim().equals("sav,") || input.toLowerCase().trim().equals("savings,") || input.toLowerCase().trim().equals("saving,")){//Will open Savings account strip() strips leading and tailing spaces
 					input = scanner.nextLine();
 					String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
 					

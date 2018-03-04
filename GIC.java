@@ -92,8 +92,8 @@ public boolean withdraw(String amount){// No transactions can be made on a GIC a
 public String toString()
   {
 	StringBuffer str = new StringBuffer(super.toString());
-    str.append("type: GIC" + "annual interest rate: " + interestRate + "%" + "\n" +
-    "period of investment " + (int)periodOfInvestment + " years" + "\n" +
+    str.append("type: GIC " + "annual interest rate: " + interestRate + "%" + "\n" +
+    "period of investment: " + (int)periodOfInvestment + " years" + "\n" +
     "new balance at maturity: " + "$" + getBalanceAtMaturity());
     
     String str2 = new String(str); 

@@ -34,7 +34,9 @@ public class Account{
 		else {accountNum = aNum;}
 
 		if(aBalance.equals("-1") || aBalance == null) {aBalance.equals("0");}
-		else {accountBalance = new BigDecimal(aBalance);}
+		else {accountBalance = new BigDecimal(aBalance); startingBalance = new BigDecimal(aBalance);}
+		
+		
 
 	}
 
@@ -118,8 +120,8 @@ public class Account{
 	 * @return
 	 */
 	public boolean deposit( BigDecimal amount ){
-		if(amount.intValue() > 0){
-			accountBalance.add(amount);
+		if(amount.doubleValue() > 0){
+			accountBalance = accountBalance.add(amount);
 			return true;
 		}
 		return false;
