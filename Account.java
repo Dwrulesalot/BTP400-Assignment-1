@@ -1,6 +1,6 @@
 import java.math;
 public class Account{
-	
+
 	protected String fullName, accountNum;
 	protected BigDecimal accountBalance, startingBalance;
 
@@ -10,7 +10,6 @@ public class Account{
 		fullName = "";
 		accountNum = "";
 		accountBalance = new BigDecimal(0);
-
 	}
 
 	//Three Argument Constructor
@@ -102,7 +101,8 @@ public class Account{
 	//toString - to be edited?
 	public String toString() {
 		String superCoolString;
-		superCoolString = fullName + ", " + accountNum + ", " + accountBalance;
+		superCoolString = "number: " + accountNum + ", " + "name: " fullName + "\n"
+		+ "starting balance: " + "$" + startingBalance + ", " + "current balance: " + "$" + accountBalance + "\n";
 		return superCoolString;
 	}
 

@@ -4,6 +4,7 @@ public class Chequing extends Account
 {
   private float serviceCharge; //Service charges
   private ArrayList<float> transactions = new ArrayList<float>(); //ArrayList to keep track of service charges
+  private int totalServiceCharge; //counter for service charges
 
   //3-arg constructor
   public Chequing(String fN, String aN, BigDecimal sB, float sC)//Daniel: Added variable types
@@ -40,6 +41,7 @@ public class Chequing extends Account
       accountBalance -= amount; //deduct withdrawal from balance //Daniel: could also use the setters created in account rather than making the variables protected then using them here like you did.
       accountBalance -= serviceCharge; //charge the service fee
       transactions.add(amount * -1); //record the withdrawal as a negative number in the ArrayList //Daniel: Should serviceCharge be included in amount?
+      totalServiceCharge++;
       return true;
     }
     else
@@ -66,8 +68,15 @@ public class Chequing extends Account
     return result;
   }
 
-  //TODO
-  public toString()
+  //toString
+  public String toString()
+  {
+    super.toString();
+    String superCoolString = "type: CHEQUING" + "\n"
+    + "service charge: " + "$" + serviceCharge + "\n"
+    + "number of transactions: " + transactions.size() + "\n"
+    + "total amount of service charge: " + "$" + (totalServiceCharge * serviceCharge);
 
-
+    return superCoolString
+  }
 }
