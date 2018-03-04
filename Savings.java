@@ -39,8 +39,11 @@ public class Savings extends Account
   }
 
   //toString IMMA DO THIS LATER
-  public toString()
+  public String toString()
   {
     super.toString();
+    String superCoolString;
+    superCoolString = "type: SAVINGS" + "\n" + "annual interest rate: " + interestRate + "%";
+    return superCoolString;
   }
 }

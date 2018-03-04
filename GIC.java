@@ -1,5 +1,4 @@
 //Author Jonathan De Groot
-
 public class GIC extends Account
 {
   private int periodOfInvestment;
