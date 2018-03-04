@@ -20,7 +20,7 @@ public class GIC extends Account
     periodOfInvestment = 1;
     interestRate = 0.0125f;//Daniel: not sure if f is needed
   }
-  
+
   //Deposit
   public boolean deposit(BigDecimal amount){// No transactions can be made on a GIC account
 		return false;
@@ -30,15 +30,15 @@ public class GIC extends Account
   public boolean withdraw(BigDecimal amount){// No transactions can be made on a GIC account
 		return false;
     }
-	
+
 	public BigDecimal getBalanceAtMaturity(){
 		BigDecimal futureBalance;
 		futureBalance = pow((getAccountBalance()*(1+interestRate)), periodOfInvestment);//pow returns a double and also expects a double, will this work? do I need to cast?
-		
+
 		return futureBalance;
-		
+
 	}
-	
+
 	//Equals operator
 	public equals(Object acc){
     boolean result = false;
@@ -56,10 +56,15 @@ public class GIC extends Account
     }
     return result;
   }
-  
+
   //toString
-  public toString(){
+  public String toString()
+  {
     super.toString();
+    String superCoolString = "type: GIC" + "annual interest rate: " + interestRate + "%" + "\n" +
+    "period of investment" + periodOfInvestment " years" + "\n" +
+    "new balance at maturity: " + "$" + getBalanceAtMaturity();
+    return superCoolString;
   }
 
 }
