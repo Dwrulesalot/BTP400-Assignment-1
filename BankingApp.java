@@ -12,19 +12,11 @@ public class BankingApp{
 		
 		Bank yeet = new Bank("Jonathan & Daniel");//YEET
 		
-		System.out.println("\n### Welcome to the Bank of Jonathan & Daniel ###");
-		//System.out.println(getHour()+":"+getMinute()+ ); need to look at api and figure out how to get it in the format shown in example
-			
+		loadBank(yeet);//populates the bank
 		
 		while (menuChoice!=6){
 			
-			System.out.println("1. Open an account");
-			System.out.println("2. Close an account");
-			System.out.println("3. Update an account");
-			System.out.println("4. Search");
-			System.out.println("5. List all accounts");
-			System.out.println("6. Exit");
-			System.out.println("\nPlease enter your choice: ");
+			displayMenu("Jonathan & Daniel");
 			
 			menuChoice=Scanner.next();//reads in next user input
 			
@@ -41,7 +33,7 @@ public class BankingApp{
 						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
 						System.out.println("\n+ Account Opened:");
-						System.out.println(newAccount);//need to code toString to print out like the example
+						displayAccount(newAccount);//need to code toString to print out like the example
 					}
 					else{
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
@@ -53,7 +45,7 @@ public class BankingApp{
 						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
 						System.out.println("\n+ Account Opened:");
-						System.out.println(newAccount);//need to code toString to print out like the example
+						displayAccount(newAccount);//need to code toString to print out like the example
 					}
 					else{
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
@@ -62,10 +54,10 @@ public class BankingApp{
 				else if(info[0].toLowerCase.strip().equals("cheq") || info[0].toLowerCase.strip().equals("cheque") || info[0].toLowerCase.strip().equals("chequing")){//Will open Chequing account
 					if(info.length==5){//checks if correct amount of info was inputed
 						account newAccount = new Chequing(info[1].strip(), info[2].strip(), info[3].strip(), info[4].strip());
-						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccountyeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
+						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
 						System.out.println("\n+ Account Opened:");
-						System.out.println(newAccount);//need to code toString to print out like the example
+						displayAccount(newAccount);//need to code toString to print out like the example
 					}
 					else{
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
@@ -85,8 +77,8 @@ public class BankingApp{
 				if(searchByAccountNumber(input.strip())!=null ){//assumes the return null in bank.java works
 					account alreadyDeleted = new Account(removeAccount(input.strip()));//I hope this works might need to do: yeet.removeAccount(input.strip())
 					
-						System.out.println("\n+ Account Deleted:");
-						System.out.println(alreadyDeleted);//need to code toString to print out like the example //will this work even if we don't know the type of account it is? - I certainly hope so
+					System.out.println("\n+ Account Deleted:");
+					displayAccount(alreadyDeleted);//need to code toString to print out like the example //will this work even if we don't know the type of account it is? - I certainly hope so
 					
 				}
 				else{
@@ -115,7 +107,7 @@ public class BankingApp{
 						
 						if(yeet.searchByAccountNumber(input.strip()).deposit((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
 							System.out.println("\n+ Account Updated:");
-							System.out.println(toBeUpdated);
+							displayAccount(toBeUpdated);
 						}
 						else{
 							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
@@ -139,7 +131,7 @@ public class BankingApp{
 						
 						if(yeet.searchByAccountNumber(input.strip()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
 							System.out.println("\n+ Account Updated:");
-							System.out.println(toBeUpdated);
+							displayAccount(toBeUpdated);
 						}
 						else{
 							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
@@ -168,61 +160,41 @@ public class BankingApp{
 					System.out.println("Please enter the account balance of the accounts you're looking for: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
 					input = Scanner.nextLine();
 					
-					ArrayList<Account> accountsToRetrieve = new ArrayList<Account>(searchByBalance(input));
+					ArrayList<Account> accountsToRetrieve = new ArrayList<Account>(yeet.searchByBalance(input));//added yeet.
 					
 					if(accountsToRetrieve!=null){//no idea if this works
-						for (int i=0; i<accountsToRetrieve.size(); i++){
-							System.out.println(accountsToRetrieve.get(i));//should work
-						}
+						listAccounts(accountsToRetrieve);//new
 					}
 					else{
-						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE RETREIVED! ***\n");//account doesn't exist error
 					}
 					
 					
 				}
 				else if(input.toLowerCase.equals("b")){//maybe add .strip() later if it works
-					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					input = Scanner.nextLine();// reads in rest of the line
+					System.out.println("Please enter the account name of the accounts you're looking for: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
+					input = Scanner.nextLine();
 					
-					account toBeUpdated = new Account(searchByAccountNumber(input.strip()));//I hope this works might need to do: yeet.searchByAccountNumber(input.strip())
+					ArrayList<Account> accountsToRetrieve = new ArrayList<Account>(yeet.searchByAccountName(input));//added yeet.
 					
-					if(toBeUpdated!=null){
-						System.out.println("Please enter the amount you would like to withdraw: ");//gotta cast input into a BigDecimal for this to work
-						amount = Scanner.nextLine();
-						
-						if(yeet.searchByAccountNumber(input.strip()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
-							System.out.println("\n+ Account Updated:");
-							System.out.println(toBeUpdated);
-						}
-						else{
-							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
-						}
+					if(accountsToRetrieve!=null){//no idea if this works
+						listAccounts(accountsToRetrieve);//new
 					}
 					else{
-						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE RETREIVED! ***\n");//account doesn't exist error
 					}
 				}
-				else if(input.toLowerCase.equals("b")){//maybe add .strip() later if it works
+				else if(input.toLowerCase.equals("c")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
 					input = Scanner.nextLine();// reads in rest of the line
 					
-					account toBeUpdated = new Account(searchByAccountNumber(input.strip()));//I hope this works might need to do: yeet.searchByAccountNumber(input.strip())
+					account toBeRetreived = new Account(searchByAccountNumber(input.strip()));//I hope this works might need to do: yeet.searchByAccountNumber(input.strip())
 					
 					if(toBeUpdated!=null){
-						System.out.println("Please enter the amount you would like to withdraw: ");//gotta cast input into a BigDecimal for this to work
-						amount = Scanner.nextLine();
-						
-						if(yeet.searchByAccountNumber(input.strip()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
-							System.out.println("\n+ Account Updated:");
-							System.out.println(toBeUpdated);
-						}
-						else{
-							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
-						}
+						displayAccount(toBeRetreived);
 					}
 					else{
-						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE RETREIVED! ***\n");//account doesn't exist error
 					}
 				}
 				else{
@@ -238,7 +210,7 @@ public class BankingApp{
 			
 			
 			else if(menuChoice.equals("6")){//might move this goodbye message outside the loop if we will be "break"ing out of the loop
-				System.out.println("");
+				System.out.println("Thanks For Banking with the Bank of Jonathan & Daniel!");
 			}
 			
 			
@@ -249,4 +221,43 @@ public class BankingApp{
 			
 		}
 	}
+	//I'm very upset
+	public void loadBank(Bank bank){
+		account newAccount1 = new GIC("John Doe", "D1234", 6000.00, 2, 1.5);
+		account newAccount2 = new Chequing("John Doe", "E5678", 15000.00, 0.75);
+		account newAccount3 = new Savings("John Doe", "F9801", 8000.00, 0.15);
+		account newAccount4 = new GIC("Mary Ryan", "A1234", 15000.00, 4 , 2.5);
+		account newAccount5 = new Chequing("Mary Ryan", "B5678", 15000.00, 0.75);
+		account newAccount6 = new Savings("Mary Ryan", "C9012", 8000.00, 0.15);
+		bank.addAccount(newAccount1);
+		bank.addAccount(newAccount2);
+		bank.addAccount(newAccount3);
+		bank.addAccount(newAccount4);
+		bank.addAccount(newAccount5);
+		bank.addAccount(newAccount6);
+	}
+	//I hate everything
+	public void displayMenu( String bankName ){
+		System.out.println("\n### Welcome to the Bank of "+bankName+" ###");
+		//System.out.println(getHour()+":"+getMinute()+ ); need to look at api and figure out how to get it in the format shown in example
+		
+		System.out.println("\n1. Open an account");
+		System.out.println("2. Close an account");
+		System.out.println("3. Update an account");
+		System.out.println("4. Search");
+		System.out.println("5. List all accounts");
+		System.out.println("6. Exit");
+		System.out.println("\nPlease enter your choice: ");
+	}
+	//Fucking end me //Literally useless
+	public void displayAccount( Account account )(Bank bank){
+		System.out.println(account);
+	}
+	//these last two are fucking pointless they replace like a line of code each wtf
+	public void listAccounts( Account [ ] listOfAccounts){
+		for (int i=0; i<listOfAccounts.size(); i++){
+			System.out.println(listOfAccounts.get(i));
+		}
+	}
+	
 }
