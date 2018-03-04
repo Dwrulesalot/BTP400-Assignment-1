@@ -27,7 +27,7 @@ public Savings(String fN, String aN, String sB, double iR)
 public Savings()
   {
     super(); //call to Account 0-arg constructor
-    interestRate = 0.3f;
+    interestRate = 3.0f;
   }
 
   //Equals operator

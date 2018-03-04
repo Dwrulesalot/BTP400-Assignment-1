@@ -34,7 +34,7 @@ public GIC()
   {
     super(); //call to Account 0-arg constructor
     periodOfInvestment = 1;
-    interestRate = 0.0125f;//Daniel: not sure if f is needed
+    interestRate = 1.25;//Daniel: not sure if f is needed
   }
 
   //Deposit
@@ -43,6 +43,7 @@ public GIC()
  * @return
  */
 public boolean deposit(String amount){// No transactions can be made on a GIC account
+		System.out.println("No deposits may be made on a GIC account");
 		return false;
   }
 
@@ -52,6 +53,7 @@ public boolean deposit(String amount){// No transactions can be made on a GIC ac
  * @return
  */
 public boolean withdraw(String amount){// No transactions can be made on a GIC account
+		System.out.println("No withdrawals may be made on a GIC account");
 		return false;
     }
 
@@ -59,7 +61,7 @@ public boolean withdraw(String amount){// No transactions can be made on a GIC a
 	 * @return
 	 */
 	public BigDecimal getBalanceAtMaturity(){
-		double futureBalance = Math.pow((getAccountBalance().doubleValue()*(interestRate)), periodOfInvestment);//pow returns a double and also expects a double, will this work? do I need to cast?
+		double futureBalance = (getAccountBalance().doubleValue()* Math.pow((1 + (interestRate/12)), periodOfInvestment));//pow returns a double and also expects a double, will this work? do I need to cast?
 		BigDecimal bd = new BigDecimal(futureBalance);
 		return bd;
 	}
