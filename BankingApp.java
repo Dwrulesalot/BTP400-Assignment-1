@@ -1,5 +1,7 @@
 import java.time.LocalDateTime;// not sure if .LocalDateTime is needed of just use java.time
 import java.lang.String;//lets us use str.split(","); and toLowerCase and .strip()
+import java.math;// for BigDecimal stuff
+import java.util.ArrayList; //for arrayList stuff
 
 public class BankingApp{
 	public static void main(String[] args) {
@@ -94,16 +96,58 @@ public class BankingApp{
 			
 			
 			else if(menuChoice.equals("3")){
-				String input;
+				String input, amount;//maybe make amount BigDecimal
+				
 				System.out.println("a. Deposit Money.");
 				System.out.println("b. Withdraw Money.\n");
+				
 				input = Scanner.nextLine();
+				
 				if(input.toLowerCase.equals("a")){//maybe add .strip() later if it works
-					System.out.println("Please enter the account number of the account you would like to update: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
+					System.out.println("Please enter the account number of the account you would like to make a deposit to: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
 					input = Scanner.nextLine();// reads in rest of the line
-				}
-				else if(input.toLowerCase.equals("a")){//maybe add .strip() later if it works
 					
+					account toBeUpdated = new Account(searchByAccountNumber(input.strip()));//I hope this works might need to do: yeet.searchByAccountNumber(input.strip())
+					
+					if(toBeUpdated!=null){
+						System.out.println("Please enter the amount you would like to deposit: ");//gotta cast input into a BigDecimal for this to work
+						amount = Scanner.nextLine();
+						
+						if(yeet.searchByAccountNumber(input.strip()).deposit((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
+							System.out.println("\n+ Account Updated:");
+							System.out.println(toBeUpdated);
+						}
+						else{
+							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
+						}
+					}
+					else{
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+					}
+					
+					
+				}
+				else if(input.toLowerCase.equals("b")){//maybe add .strip() later if it works
+					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
+					input = Scanner.nextLine();// reads in rest of the line
+					
+					account toBeUpdated = new Account(searchByAccountNumber(input.strip()));//I hope this works might need to do: yeet.searchByAccountNumber(input.strip())
+					
+					if(toBeUpdated!=null){
+						System.out.println("Please enter the amount you would like to withdraw: ");//gotta cast input into a BigDecimal for this to work
+						amount = Scanner.nextLine();
+						
+						if(yeet.searchByAccountNumber(input.strip()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
+							System.out.println("\n+ Account Updated:");
+							System.out.println(toBeUpdated);
+						}
+						else{
+							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
+						}
+					}
+					else{
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+					}
 				}
 				else{
 					System.out.println("*** FAILED: INVALID INPUT! ***\n");// Will return user to the main menu
@@ -112,14 +156,84 @@ public class BankingApp{
 			
 			
 			else if(menuChoice.equals("4")){
+				String input;
+				
 				System.out.println("a. Search by account balance.");
 				System.out.println("b. Search by account name.");
 				System.out.println("c. Search by account number.\n");
+				
+				input = Scanner.nextLine();
+				
+				if(input.toLowerCase.equals("a")){//maybe add .strip() later if it works
+					System.out.println("Please enter the account balance of the accounts you're looking for: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
+					input = Scanner.nextLine();
+					
+					ArrayList<Account> accountsToRetrieve = new ArrayList<Account>(searchByBalance(input));
+					
+					if(accountsToRetrieve!=null){//no idea if this works
+						for (int i=0; i<accountsToRetrieve.size(); i++){
+							System.out.println(accountsToRetrieve.get(i));//should work
+						}
+					}
+					else{
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+					}
+					
+					
+				}
+				else if(input.toLowerCase.equals("b")){//maybe add .strip() later if it works
+					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
+					input = Scanner.nextLine();// reads in rest of the line
+					
+					account toBeUpdated = new Account(searchByAccountNumber(input.strip()));//I hope this works might need to do: yeet.searchByAccountNumber(input.strip())
+					
+					if(toBeUpdated!=null){
+						System.out.println("Please enter the amount you would like to withdraw: ");//gotta cast input into a BigDecimal for this to work
+						amount = Scanner.nextLine();
+						
+						if(yeet.searchByAccountNumber(input.strip()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
+							System.out.println("\n+ Account Updated:");
+							System.out.println(toBeUpdated);
+						}
+						else{
+							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
+						}
+					}
+					else{
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+					}
+				}
+				else if(input.toLowerCase.equals("b")){//maybe add .strip() later if it works
+					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
+					input = Scanner.nextLine();// reads in rest of the line
+					
+					account toBeUpdated = new Account(searchByAccountNumber(input.strip()));//I hope this works might need to do: yeet.searchByAccountNumber(input.strip())
+					
+					if(toBeUpdated!=null){
+						System.out.println("Please enter the amount you would like to withdraw: ");//gotta cast input into a BigDecimal for this to work
+						amount = Scanner.nextLine();
+						
+						if(yeet.searchByAccountNumber(input.strip()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
+							System.out.println("\n+ Account Updated:");
+							System.out.println(toBeUpdated);
+						}
+						else{
+							System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//this error means invalid money amount was input aka negative number or not a number
+						}
+					}
+					else{
+						System.out.println("*** FAILED: ACCOUNT CANNOT BE UPDATED! ***\n");//account doesn't exist error
+					}
+				}
+				else{
+					System.out.println("*** FAILED: INVALID INPUT! ***\n");// Will return user to the main menu
+				}
+				
 			}
 			
 			
 			else if(menuChoice.equals("5")){
-				
+				System.out.println(yeet);//favourite line, also thank you Java Gods for toString.
 			}
 			
 			
