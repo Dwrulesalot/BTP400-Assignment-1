@@ -38,7 +38,7 @@ public class BankingApp{
 			
 			String errorFixer;
 			
-			menuChoice = scanner.next();//reads in next user input
+			menuChoice = scanner.nextLine();//reads in next user input
 			
 			if(menuChoice.equals("1")){//am I doing this right?
 				
@@ -128,7 +128,7 @@ public class BankingApp{
 			else if(menuChoice.equals("2")){
 				
 				System.out.println("Please enter the account number of the account you would like to close: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-				String input = scanner.next();// reads in rest of the line
+				String input = scanner.nextLine();// reads in rest of the line
 				
 				if(yeet.searchByAccountNumber(input.trim())!=null ){//assumes the return null in bank.java works	
 					System.out.println("\n+ Account Deleted:");
@@ -147,16 +147,16 @@ public class BankingApp{
 				System.out.println("a. Deposit Money.");
 				System.out.println("b. Withdraw Money.\n");
 				
-				String input = scanner.next();
+				String input = scanner.nextLine();
 				
 				if(input.toLowerCase().equals("a")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account number of the account you would like to make a deposit to: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					String input2 = scanner.next();// reads in rest of the line
+					String input2 = scanner.nextLine();// reads in rest of the line
 					
 					
 					if(yeet.searchByAccountNumber(input2.trim())!=null){
 						System.out.println("Please enter the amount you would like to deposit: ");//gotta cast input into a BigDecimal for this to work
-						amount = new BigDecimal(scanner.next());
+						amount = new BigDecimal(scanner.nextLine());
 						
 						if(yeet.searchByAccountNumber(input2.trim()).deposit(amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
 							System.out.println("\n+ Account Updated:");
@@ -174,11 +174,11 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().equals("b")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					String input2 = scanner.next();// reads in rest of the line
+					String input2 = scanner.nextLine();// reads in rest of the line
 									
 					if(yeet.searchByAccountNumber(input2.trim())!=null){
 						System.out.println("Please enter the amount you would like to withdraw: ");//gotta cast input into a BigDecimal for this to work
-						amount = new BigDecimal(scanner.next());
+						amount = new BigDecimal(scanner.nextLine());
 						
 						if(yeet.searchByAccountNumber(input2.trim()).withdraw((BigDecimal)amount)){//I'm starting to think I need to be doing this yeet.blah format alot more // ALSO CASTING A STRING TO BIGDECIMAL???? fuck man idk how much of this code will actually work
 							System.out.println("\n+ Account Updated:");
@@ -204,11 +204,11 @@ public class BankingApp{
 				System.out.println("b. Search by account name.");
 				System.out.println("c. Search by account number.\n");
 				
-				String input = scanner.next();
+				String input = scanner.nextLine();
 				
 				if(input.toLowerCase().equals("a")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account balance of the accounts you're looking for: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					String input2 = scanner.next();
+					String input2 = scanner.nextLine();
 					
 					Account [] accountsToRetrieve = yeet.searchByBalance(input2);//added yeet.
 					
@@ -223,7 +223,7 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().equals("b")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account name of the accounts you're looking for: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					String input2 = scanner.next();
+					String input2 = scanner.nextLine();
 					
 					Account [] accountsToRetrieve = yeet.searchByAccountName(input2);//added yeet.
 					
@@ -236,7 +236,7 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().equals("c")){//maybe add .strip() later if it works
 					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");//to read this in we need to use delimiters: Commas followed by zero or more blank spaces are used to separate data values or maybe get the whole line?
-					String input2 = scanner.next();// reads in rest of the line
+					String input2 = scanner.nextLine();// reads in rest of the line
 							
 					if(yeet.searchByAccountNumber(input2.trim())!=null){
 						displayAccount(yeet.searchByAccountNumber(input2.trim()));
