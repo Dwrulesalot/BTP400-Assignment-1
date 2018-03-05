@@ -62,6 +62,7 @@ public class GIC extends Account
 	/**
 	 * @return
 	 */
+	@SuppressWarnings("deprecation")
 	public BigDecimal getBalanceAtMaturity(){
 		double futureBalance = (getAccountBalance().doubleValue()* Math.pow((1 + (interestRate/12)), periodOfInvestment));
 		BigDecimal bd = new BigDecimal(futureBalance);
