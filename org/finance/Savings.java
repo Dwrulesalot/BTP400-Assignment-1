@@ -18,7 +18,7 @@ public class Savings extends Account
  */
 public Savings(String fN, String aN, String sB, double iR)
   {
-    super(fN, aN, sB); //call to Account 3-arg constructor
+    super(fN, aN, sB);
     interestRate = iR;
   }
 
@@ -55,7 +55,6 @@ public boolean equals(Object acc)
     return result;
   }
 
-  //toString IMMA DO THIS LATER
   /* (non-Javadoc)
  * @see Account#toString()
  */

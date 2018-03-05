@@ -20,14 +20,12 @@ public class Account{
 	}
 
 	//Three Argument Constructor
-	/**
+	/**checks each entered value, if null or -1 is entered, enters that variable into "safe state"
 	 * @param name full name of client
 	 * @param aNum account number
 	 * @param aBalance account balance / current balance
 	 */
-	public Account(String name, String aNum, String aBalance) {//example uses double but instructions say to use int
-
-		//checks each entered value, if null or -1 is entered, enters that variable into "safe state"
+	public Account(String name, String aNum, String aBalance) {
 
 		if(name==null) {fullName = "";}
 		else {fullName = name;}
@@ -116,7 +114,6 @@ public class Account{
 		return result;
 	}
 
-	//Two new public methods
 	/**
 	 * @param amount
 	 * @return
@@ -141,7 +138,6 @@ public class Account{
 		return false;
 	}
 
-	//toString - to be edited?
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
