@@ -1,9 +1,9 @@
 package seneca.btp400.w18;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;// not sure if .LocalDateTime is needed of just use java.time
-import java.time.format.DateTimeFormatter;//kill me
-import java.lang.String;//lets us use str.split(","); and toLowerCase and .strip()
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.lang.String;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
@@ -26,11 +26,11 @@ public class BankingApp{
 		
 		String menuChoice= "";
 		
-		Scanner scanner = new Scanner (System.in);//reads user input
+		Scanner scanner = new Scanner (System.in);
 		
-		Bank yeet = new Bank("Jonathan & Daniel");//YEET
+		Bank yeet = new Bank("Jonathan & Daniel");
 		
-		loadBank(yeet);//populates the bank
+		loadBank(yeet);
 		
 		while (!menuChoice.equals("6")){
 			
@@ -38,27 +38,24 @@ public class BankingApp{
 			
 			String errorFixer;
 			
-			menuChoice = scanner.nextLine();//reads in next user input
+			menuChoice = scanner.nextLine();
 			
-			if(menuChoice.equals("1")){//am I doing this right?
+			if(menuChoice.equals("1")){
 				
 				System.out.println("Please enter information(e.g. account type, name, account number, balance, interest rate): ");
-				String input = scanner.next();// reads in rest of the line
+				String input = scanner.next();
 				
-				//String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
-				
-				//if(info[0].toLowerCase().trim().equals("sav") || info[0].toLowerCase().trim().equals("savings") || info[0].trim().toLowerCase().equals("saving") ){//Will open Savings account strip() strips leading and tailing spaces
 				if(input.toLowerCase().trim().equals("sav") || input.toLowerCase().trim().equals("savings") || input.toLowerCase().trim().equals("saving") || input.toLowerCase().trim().equals("sav,") || input.toLowerCase().trim().equals("savings,") || input.toLowerCase().trim().equals("saving,")){//Will open Savings account strip() strips leading and tailing spaces
 					input = scanner.nextLine();
-					String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
+					String[] info = input.split(",");
 					
 					
-					if(info.length==4){//checks if correct amount of info was inputed
+					if(info.length==4){
 						Account newAccount = new Savings(info[0].trim(), info[1].trim(), info[2].trim(), Double.valueOf(info[3].trim()));
 						if(yeet.addAccount(newAccount)){
 							
 							System.out.println("\n+ Account Opened:");
-							displayAccount(newAccount);//need to code toString to print out like the example
+							displayAccount(newAccount);
 						}
 						else{
 							errorFixer = scanner.nextLine();
@@ -72,16 +69,16 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().trim().equals("gic") || input.toLowerCase().trim().equals("guaranteed investment certificate") || input.toLowerCase().trim().equals("gic,") || input.toLowerCase().trim().equals("guaranteed investment certificate,")){//Will open GIC account
 					input = scanner.nextLine();
-					String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
+					String[] info = input.split(",");
 					
 					
-					if(info.length==5){//checks if correct amount of info was inputed
+					if(info.length==5){
 						Account newAccount = new GIC(info[0].trim(), info[1].trim(), info[2].trim(),  Double.valueOf(info[3].trim()),  Double.valueOf(info[4].trim()));// name newAccount can be reused as there's no way the if statements could both be run since it's an else if
 						
 						if(yeet.addAccount(newAccount)){
 							
 							System.out.println("\n+ Account Opened:");
-							displayAccount(newAccount);//need to code toString to print out like the example
+							displayAccount(newAccount);
 						}
 						else{
 							errorFixer = scanner.nextLine();
@@ -95,16 +92,16 @@ public class BankingApp{
 				}
 				else if(input.toLowerCase().trim().equals("cheq") || input.toLowerCase().trim().equals("cheque") || input.toLowerCase().trim().equals("chequing") || input.toLowerCase().trim().equals("cheq,") || input.toLowerCase().trim().equals("cheque,") || input.toLowerCase().trim().equals("chequing,")){//Will open Chequing account
 					input = scanner.nextLine();
-					String[] info = input.split(",");//Delimits by , but strings might have a blank space between them, get rid of that later
+					String[] info = input.split(",");
 					
 					
-					if(info.length==4){//checks if correct amount of info was inputed
+					if(info.length==4){
 						Account newAccount = new Chequing(info[0].trim(), info[1].trim(), info[2].trim(), Double.valueOf(info[3].trim()));
 						
 						if(yeet.addAccount(newAccount)){
 							
 							System.out.println("\n+ Account Opened:");
-							displayAccount(newAccount);//need to code toString to print out like the example
+							displayAccount(newAccount);
 						}
 						else{
 							errorFixer = scanner.nextLine();
