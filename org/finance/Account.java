@@ -135,7 +135,7 @@ public class Account{
 	 */
 	public boolean withdraw( BigDecimal amount ){
 		if(amount.intValue() > 0 && (accountBalance.subtract(amount)).intValue() > 0){
-			accountBalance.subtract(amount);
+			accountBalance = accountBalance.subtract(amount);
 			return true;
 		}
 		return false;
