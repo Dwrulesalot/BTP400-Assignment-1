@@ -231,7 +231,7 @@ public class BankingApp{
 					}
 				}
 				else if(input.toLowerCase().equals("c")){
-					System.out.println("Please enter the account number of the account you would like to make a withdrawal from: ");
+					System.out.println("Please enter the account number of the account you're looking for: ");
 					String input2 = scanner.nextLine();
 							
 					if(yeet.searchByAccountNumber(input2.trim())!=null){

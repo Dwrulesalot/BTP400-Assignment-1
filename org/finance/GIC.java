@@ -65,7 +65,7 @@ public boolean withdraw(String amount){
 	public BigDecimal getBalanceAtMaturity(){
 		double futureBalance = (getAccountBalance().doubleValue()* Math.pow((1 + (interestRate/12)), periodOfInvestment));
 		BigDecimal bd = new BigDecimal(futureBalance);
-		return bd;
+		return bd.setScale(2, BigDecimal.ROUND_HALF_UP);
 	}
 
 	//Equals operator
