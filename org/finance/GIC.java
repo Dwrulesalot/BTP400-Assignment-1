@@ -10,54 +10,54 @@ import java.lang.Math;
 
 public class GIC extends Account
 {
-  private double periodOfInvestment;
-  private double interestRate;
+	private double periodOfInvestment;
+	private double interestRate;
 
-  //3-arg constructor
-  /**
- * @param fN
- * @param aN
- * @param sB
- * @param pOI
- * @param iR
- */
-public GIC(String fN, String aN, String sB, double pOI, double iR)
-  {
-    super(fN, aN, sB);
-    periodOfInvestment = pOI;
-    interestRate = iR;
-  }
+	 //3-arg constructor
+	 /**
+	  * @param fN
+	  * @param aN
+	  * @param sB
+	  * @param pOI
+	  * @param iR
+	  */
+	public GIC(String fN, String aN, String sB, double pOI, double iR)
+	{
+		super(fN, aN, sB);
+		periodOfInvestment = pOI;
+		interestRate = iR;
+	}
 
-  //0-arg constructor
-  /**
- * 
- */
-public GIC()
-  {
-    super(); 
-    periodOfInvestment = 1;
-    interestRate = 1.25;
-  }
+	//0-arg constructor
+	/**
+	 * 
+	 */
+	public GIC()
+	{
+		super(); 
+		periodOfInvestment = 1;
+		interestRate = 1.25;
+	}
 
-  //Deposit
-  /**
- * @param amount
- * @return
- */
-public boolean deposit(String amount){
+	//Deposit
+	/**
+	 * @param amount
+	 * @return
+	 */
+	public boolean deposit(String amount){
 		System.out.println("No deposits may be made on a GIC account");
 		return false;
-  }
+	}
 
-  //Withdrawal
-  /**
- * @param amount
- * @return
- */
-public boolean withdraw(String amount){
+	//Withdrawal
+	/**
+	 * @param amount
+	 * @return
+	 */
+	public boolean withdraw(String amount){
 		System.out.println("No withdrawals may be made on a GIC account");
 		return false;
-    }
+	}
 
 	/**
 	 * @return
@@ -76,32 +76,32 @@ public boolean withdraw(String amount){
     boolean result = false;
 
     if ( acc instanceof GIC ){
-		GIC acc2 = (GIC) acc;
+    	GIC acc2 = (GIC) acc;
+    	
+    	if ( (acc2.fullName.equals(fullName)) &&
+    		(acc2.accountNum.equals(accountNum)) &&
+    		(acc2.accountBalance.equals(accountBalance)) &&
+    		(acc2.periodOfInvestment == periodOfInvestment &&
+    		(acc2.interestRate == interestRate)))
 
-		if ( (acc2.fullName.equals(fullName)) &&
-			(acc2.accountNum.equals(accountNum)) &&
-			(acc2.accountBalance.equals(accountBalance)) &&
-			(acc2.periodOfInvestment == periodOfInvestment &&
-			(acc2.interestRate == interestRate)))
-
-			result = true;
+    		result = true;
     }
     return result;
-  }
+	}
 
-  //toString
-  /* (non-Javadoc)
- * @see Account#toString()
- */
-public String toString()
-  {
-	StringBuffer str = new StringBuffer(super.toString());
-    str.append("type: GIC " + "annual interest rate: " + interestRate + "%" + "\n" +
-    "period of investment: " + (int)periodOfInvestment + " years" + "\n" +
-    "new balance at maturity: " + "$" + getBalanceAtMaturity());
+	//toString
+	 /* (non-Javadoc)
+	  * @see Account#toString()
+	  */
+	public String toString()
+	{
+		StringBuffer str = new StringBuffer(super.toString());
+		str.append("type: GIC " + "annual interest rate: " + interestRate + "%" + "\n" +
+				"period of investment: " + (int)periodOfInvestment + " years" + "\n" +
+				"new balance at maturity: " + "$" + getBalanceAtMaturity());
     
-    String str2 = new String(str); 
-    return str2;
-  }
+		String str2 = new String(str); 
+		return str2;
+	}
 
 }
