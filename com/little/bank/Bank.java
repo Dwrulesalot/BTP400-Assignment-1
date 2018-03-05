@@ -87,7 +87,7 @@ public class Bank{
 		Account[] returnMe = new Account[isItEmpty];//supposed to return array with length zero if nothing is found?
 		
 		if(isItEmpty==0){
-			return returnMe;
+			return null;
 		}
 		
 		int index=0;
@@ -120,7 +120,7 @@ public class Bank{
 		Account[] returnMe = new Account[isItEmpty];//supposed to return array with length zero if nothing is found?
 		
 		if(isItEmpty==0){
-			return returnMe;
+			return null;
 		}
 		
 		int index=0;
