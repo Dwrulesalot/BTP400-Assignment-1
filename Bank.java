@@ -36,8 +36,8 @@ public class Bank{
 		}
 		
 		
-		for(int i=0; i<accounts.size();i++){//could also use .contains
-			//if (accounts.get(i).equals(newAccount)){//only works if everything equals the same value looking at the example he wants you to only check account #
+		for(int i=0; i<accounts.size();i++){
+			//if (accounts.get(i).equals(newAccount)){//only works if everything equals the same value looking at the example he wants you to only check account # //note from lab 3
 			if (accounts.get(i).getAccountNumber().equals(newAccount.getAccountNumber())){ 
 				return false;
 			}
@@ -59,7 +59,7 @@ public class Bank{
 			Bank bnk2 = (Bank) bnk;
 			
 			for (int i=0;i<accounts.size();i++){
-				if (bnk2.bankName.equals(bankName) && bnk2.accounts.equals(accounts)) {//uses built in array-list .equals function
+				if (bnk2.bankName.equals(bankName) && bnk2.accounts.equals(accounts)) {
 					result = true;
 				}
 			}
@@ -71,7 +71,7 @@ public class Bank{
 	 * @param balance
 	 * @return
 	 */
-	public Account[] searchByBalance(String balance){//maybe make it static Account[]?
+	public Account[] searchByBalance(String balance){
 		
 		int isItEmpty=0;
 		
@@ -81,7 +81,7 @@ public class Bank{
 			}
 		}
 		
-		Account[] returnMe = new Account[isItEmpty];//supposed to return array with length zero if nothing is found?
+		Account[] returnMe = new Account[isItEmpty];
 		
 		if(isItEmpty==0){
 			return returnMe;
@@ -105,7 +105,7 @@ public class Bank{
 	 * @param accountName
 	 * @return
 	 */
-	public Account [ ] searchByAccountName( String accountName ){//just re-used code from above, double check if logic holds
+	public Account [ ] searchByAccountName( String accountName ){
 		int isItEmpty=0;
 		
 		for(int i=0;i<accounts.size();i++){
@@ -114,7 +114,7 @@ public class Bank{
 			}
 		}
 		
-		Account[] returnMe = new Account[isItEmpty];//supposed to return array with length zero if nothing is found?
+		Account[] returnMe = new Account[isItEmpty];
 		
 		if(isItEmpty==0){
 			return returnMe;
@@ -141,7 +141,7 @@ public class Bank{
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
 			for(int i=0;i<accounts.size();i++){
 				if(accounts.get(i).getAccountNumber().equals(accountNumber)){
-					return accounts.get(i); //not sure if I can do this
+					return accounts.get(i);
 				}
 			}
 		}
@@ -152,12 +152,12 @@ public class Bank{
 	 * @param accountNumber
 	 * @return
 	 */
-	public Account removeAccount( String accountNumber ){//remove an account but also return it? dumb but okay
+	public Account removeAccount( String accountNumber ){
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
 			for(int i=0;i<accounts.size();i++){
 				if(accounts.get(i).getAccountNumber().equals(accountNumber)){
 					Account temp;
-					temp = accounts.get(i);//not sure if I can do this
+					temp = accounts.get(i);
 					accounts.remove(i);
 					return temp; 
 				}
@@ -171,7 +171,7 @@ public class Bank{
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	public String toString() {//not sure if the Welcome is needed, as we will be using this toString mainly to print out all accounts - check with menu choice 5 in BankingApp // also might want to update
+	public String toString() {
 		String superCoolString;
 		superCoolString = "\n\n*** Welcome to the Bank of "+bankName+" ***"+"\nIt has "+accounts.size()+" accounts.";
 		for (int i=0; i<accounts.size(); i++){

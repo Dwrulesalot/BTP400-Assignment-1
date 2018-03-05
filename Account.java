@@ -23,8 +23,7 @@ public class Account{
 	 * @param aNum account number
 	 * @param aBalance account balance / current balance
 	 */
-	public Account(String name, String aNum, String aBalance) {//example uses double but instructions say to use int
-
+	public Account(String name, String aNum, String aBalance) {
 		//checks each entered value, if null or -1 is entered, enters that variable into "safe state"
 
 		if(name==null) {fullName = "";}
