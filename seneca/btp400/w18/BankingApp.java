@@ -15,6 +15,8 @@ import org.finance.Savings;
 import com.little.bank.Bank;
 
 /**
+ * Let's the user add new accounts, close existing accounts, update accounts by making deposits or withdrawls, search for specific accounts by account balance, account name or account number
+ * as well as search for accounts by account number to the Bank of Jonathan & Daniel
  * @author Daniel Wierzbicki
  *
  */
@@ -267,7 +269,9 @@ public class BankingApp{
 	}
 	
 	/**
-	 * @param bank
+	 * Adds six accounts to the bank in it's parameters
+	 * 
+	 * @param bank Bank to which new accounts will be added into
 	 */
 	public static void loadBank(Bank bank){
 		Account newAccount1 = new GIC("John Doe", "D1234", "6000.00", 2, 1.5);
@@ -285,7 +289,9 @@ public class BankingApp{
 	}
 	
 	/**
-	 * @param bankName
+	 * Displays possible menu options for the user to choose from
+	 * 
+	 * @param bankName name of the bank
 	 */
 	public static void displayMenu( String bankName ){
 		System.out.println("\n### Welcome to the Bank of "+bankName+" ###");
@@ -301,14 +307,17 @@ public class BankingApp{
 	}
 	
 	/**
-	 * @param account
+	 * Calls the toString method of the inputted account
+	 * 
+	 * @param account account to be displayed
 	 */
 	public static void displayAccount( Account account ){
 		System.out.println(account);
 	}
 	
 	/**
-	 * @param listOfAccounts
+	 * Loops through an array of accounts calling each index's respective toString method no matter the type of account
+	 * @param listOfAccounts list of accounts to be displayed
 	 */
 	public static void listAccounts( Account [ ] listOfAccounts){
 		for (int i=0; i<listOfAccounts.length; i++){
