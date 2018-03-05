@@ -6,9 +6,15 @@ import org.junit.Test;
 
 public class SavingTest {
 
-	@Test
+	@Test //testing if safe state is properly created
 	public void test() {
-		fail("Not yet implemented");
+		
+		Account test = new Savings();
+		
+		Account tester = new Savings("", "", BigDecimal(0), 3.0);
+		
+		assertEquals(tester, test);
+		
 	}
 
 }
