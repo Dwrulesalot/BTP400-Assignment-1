@@ -20,9 +20,9 @@ public class Chequing extends Account
  * @param sB
  * @param sC
  */
-public Chequing(String fN, String aN, String sB, double sC)//Daniel: Added variable types
+public Chequing(String fN, String aN, String sB, double sC)
   {
-    super(fN, aN, sB); //call to Account 3-arg constructor
+    super(fN, aN, sB); 
     serviceCharge = new BigDecimal(sC);
   }
 
@@ -32,8 +32,8 @@ public Chequing(String fN, String aN, String sB, double sC)//Daniel: Added varia
  */
 public Chequing()
   {
-    super(); //call to Account 0-arg constructor
-    serviceCharge = new BigDecimal(0.25);//Daniel: don't think f is needed
+    super(); 
+    serviceCharge = new BigDecimal(0.25);
   }
 
   //Deposit
@@ -44,8 +44,8 @@ public boolean deposit(BigDecimal amount)
   {
     if(amount.intValue() > 0)
     {
-      accountBalance = accountBalance.add(amount); //add deposit to balance  //Daniel: could also use the setters created in account rather than making the variables protected then using them here like you did. ie. setAccountBalance(accountBalance+amount)
-      transactions.add(amount.toString()); //record the deposit in the ArrayList
+      accountBalance = accountBalance.add(amount); 
+	  transactions.add(amount.toString()); 
       return true;
     }
     else
@@ -60,10 +60,10 @@ public boolean withdraw(BigDecimal amount)
   {
     if(amount.intValue() > 0 && (accountBalance.subtract(amount)).intValue() > 0)
     {
-      accountBalance = accountBalance.subtract(amount); //deduct withdrawal from balance //Daniel: could also use the setters created in account rather than making the variables protected then using them here like you did.
-      accountBalance = accountBalance.subtract(serviceCharge); //charge the service fee
+      accountBalance = accountBalance.subtract(amount); 
+      accountBalance = accountBalance.subtract(serviceCharge);
       int why = amount.intValue() * -1;
-      transactions.add(Integer.toString(why)); //record the withdrawal as a negative number in the ArrayList //Daniel: Should serviceCharge be included in amount?
+      transactions.add(Integer.toString(why)); 
       totalServiceCharge++;
       return true;
     }
