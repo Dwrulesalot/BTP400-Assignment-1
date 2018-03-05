@@ -6,9 +6,40 @@ import org.junit.Test;
 
 public class GICTest {
 
-	@Test
+	@Test //testing if safe state is properly created
 	public void test() {
-		fail("Not yet implemented");
+		Account test = new GIC();
+		
+		Account tester = new GIC("", "", BigDecimal(0), 1, 1.25);
+		
+		assertEquals(tester, test);
 	}
-
+	
+	@Test //testing if deposit returns false
+	public void test2() {
+		Account tester2 = new GIC();
+		
+		boolean test2 = tester2.deposit("10000");
+		
+		assertFalse(test2);
+	}
+	
+	@Test //testing if withdraw returns false
+	public void test3() {
+		Account tester3 = new GIC();
+		
+		boolean test3 = tester3.withdraw("10000");
+		
+		assertFalse(test3);
+	}
+	
+	@Test //tests method balanceAtMaturity // still needs to be completed
+	public void test4() {
+		Account tester4 = new GIC("", "", BigDecimal(0), 1, 1.25);
+		
+		boolean test4 = tester4.withdraw("10000");
+		
+		assertFalse(test4);
+	}
+	
 }
