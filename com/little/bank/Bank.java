@@ -1,4 +1,8 @@
+package com.little.bank;
+
 import java.util.ArrayList;
+
+import org.finance.Account;
 
 /**
  * @author Daniel Wierzbicki

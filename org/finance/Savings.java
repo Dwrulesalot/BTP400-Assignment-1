@@ -1,3 +1,5 @@
+package org.finance;
+
 /**
  * @author Jonathan De Groot
  *

@@ -1,3 +1,5 @@
+package org.finance;
+
 import java.math.BigDecimal;
 /**
  * @author Daniel Wierzbicki

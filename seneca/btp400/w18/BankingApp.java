@@ -1,9 +1,18 @@
+package seneca.btp400.w18;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;// not sure if .LocalDateTime is needed of just use java.time
 import java.time.format.DateTimeFormatter;//kill me
 import java.lang.String;//lets us use str.split(","); and toLowerCase and .strip()
 import java.math.BigDecimal;
 import java.util.Scanner;
+
+import org.finance.Account;
+import org.finance.Chequing;
+import org.finance.GIC;
+import org.finance.Savings;
+
+import com.little.bank.Bank;
 
 /**
  * @author Daniel Wierzbicki
