@@ -12,7 +12,7 @@ public class Savings extends Account
 	private double interestRate; 
 
 	/**
-	 * Three arguement Constructor that calls to account's three arguement constructor
+	 * Three argument Constructor that calls to account's three arguement constructor
 	 * 
 	 * @param fN full name of account holder
 	 * @param aN account number - will be unique
@@ -27,17 +27,21 @@ public class Savings extends Account
 	}
 
 	/**
-	 * Zero arguement Constructor that calls to the Account's zero arguement constructor
+	 * Zero argument Constructor that calls to the Account's zero argument constructor
+	 * Sets the interest rate to a safe state
 	 */
 	public Savings()
 	{
 		super();
-		interestRate = 3.0f;
+		interestRate = 3.0;
 	}
 
 	/* 
-	 * Equals operator checks to see if the 
-	 * @param acc object that is being to see it is of type savings of account
+	 * Equals operator checks to see if the param is the same as the current object
+	 * 
+	 * @param acc object that is being compared
+	 * @return boolean returns true if it's the same account false if it's a different account
+	 * 
 	 */
 	public boolean equals(Object acc)
  	{
@@ -60,6 +64,8 @@ public class Savings extends Account
 
 	/* 
 	 * Returns a string containing all the information contained in the saving's account, calling it's parent's toString before appending the extra information to it
+	 * 
+	 * @return String containing all the saving's info
 	 * @see Account's toString
 	 */
 	public String toString()

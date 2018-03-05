@@ -5,34 +5,44 @@ import java.util.ArrayList;
 import org.finance.Account;
 
 /**
+ * This class acts as a bank, with a collection of accounts in it as well as a name.
+ * Functionality of this class includes being able to search through the list of accounts by their account balance,
+ * account number or account balance, as well as adding or removing accounts from the account arraylist
+ * 
  * @author Daniel Wierzbicki
  *
  */
 
 public class Bank{
-	//ArrayList of accounts
+	
 	private String bankName;
 	ArrayList<Account> accounts = new ArrayList<Account>();
 	
-	//Zero Argument Constructor
-	/**
-	 * 
+
+	/*
+	 * Zero Argument Constructor
+	 * Safe state of bank name is "Seneca@York"
 	 */
 	public Bank() {
 		bankName ="Seneca@York";
 	}
 	
-	//One Argument Constructor
-	/**
-	 * @param s
+
+	/*
+	 * 	One argument constructor 
+	 * 
+	 * @param s name of the bank
 	 */
 	public Bank(String s) {
 		bankName =s;
 	}
 	
-	/**
-	 * @param newAccount
-	 * @return
+	/*
+	 * This method adds an account to the arraylist in the current bank object, 
+	 * if it's not null and if it's account number is not already in the arraylist
+	 * 
+	 * @param newAccount account object to be added to the bank's arraylist of accounts
+	 * @return true if the account was successfully added
 	 */
 	public boolean addAccount( Account newAccount ){
 		if(newAccount == null){
@@ -50,9 +60,11 @@ public class Bank{
 		
 	}
 	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+	 /*
+     * Equals operator checks to see if the banks are the same
+     * 
+	 * @param bank account being compared to this bank
+     */
 	public boolean equals( Object bnk ) {
 
 		boolean result = false;
@@ -70,9 +82,11 @@ public class Bank{
 		return result;
 	}
 	
-	/**
-	 * @param balance
-	 * @return
+	/*
+	 * Looks through the bank's arraylist of accounts and checks if there is any that match the parameter
+	 * 
+	 * @param balance balance being compared to the bank's arraylist of account's balances
+	 * @return Account[] array of found accounts with parameter balance
 	 */
 	public Account[] searchByBalance(String balance){
 		
@@ -103,10 +117,11 @@ public class Bank{
 		
 	}
 	
-	//Three new public methods
-	/**
-	 * @param accountName
-	 * @return
+	/*
+	 * Looks through the bank's arraylist of accounts and checks if there is any that match the parameter
+	 * 
+	 * @param accountName account name being compared to the bank's arraylist of account's account names
+	 * @return Account[] array of found accounts with parameter balance
 	 */
 	public Account [ ] searchByAccountName( String accountName ){
 		int isItEmpty=0;
@@ -136,9 +151,12 @@ public class Bank{
 		
 	}
 	
-	/**
-	 * @param accountNumber
-	 * @return
+	/*
+	 * Looks through the bank's arraylist of accounts and checks if there is any that match the parameter.
+	 * Since each account has a unique accountNumber, only one account with and one accountNumber can exist
+	 * 
+	 * @param accountNumber number being compared to the bank's arraylist of unique account numbers
+	 * @return Account account with an account number matching the paramaters'
 	 */
 	public Account searchByAccountNumber( String accountNumber ){
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
@@ -152,8 +170,11 @@ public class Bank{
 	}
 	
 	/**
-	 * @param accountNumber
-	 * @return
+	 * This method removes an account to the arraylist in the current bank object, 
+	 * if it's not null 
+	 * 
+	 * @param accountNumber account number of account to be removed from the arraylist of accounts
+	 * @return Account which will not be null if the account was successfully removed
 	 */
 	public Account removeAccount( String accountNumber ){
 		if(!accountNumber.equals("") && !accountNumber.equals(null)){
@@ -170,9 +191,8 @@ public class Bank{
 	}
 	
 	
-	//toString Method
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/* 
+	 * @return String of all the information held in the Bank, looping through the arraylist printing the accounts one at a time
 	 */
 	public String toString() {
 		String superCoolString;
