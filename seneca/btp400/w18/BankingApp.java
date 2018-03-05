@@ -36,6 +36,8 @@ public class BankingApp{
 			
 			displayMenu("Jonathan & Daniel");
 			
+			String errorFixer;
+			
 			menuChoice = scanner.next();//reads in next user input
 			
 			if(menuChoice.equals("1")){//am I doing this right?
@@ -59,6 +61,7 @@ public class BankingApp{
 						displayAccount(newAccount);//need to code toString to print out like the example
 					}
 					else{
+						errorFixer = scanner.nextLine();
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
 					}
 				}
@@ -75,6 +78,7 @@ public class BankingApp{
 						displayAccount(newAccount);//need to code toString to print out like the example
 					}
 					else{
+						errorFixer = scanner.nextLine();
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
 					}
 				}
@@ -91,13 +95,15 @@ public class BankingApp{
 						displayAccount(newAccount);//need to code toString to print out like the example
 					}
 					else{
+						errorFixer = scanner.nextLine();
 						System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means not enough/too many things were inputted for this account
 					}
 				}
 				else{
+					errorFixer = scanner.nextLine();
 					System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// basically means improper input and will return user to the main menu
 				}
-				String errorFixer = scanner.nextLine();//HEY IT ACTUALLY CATCHS THE ERROR LOL, ALSO PLEASE ACTUALLY FIX THIS ERROR
+				errorFixer = scanner.nextLine();//HEY IT ACTUALLY CATCHS THE ERROR LOL, ALSO PLEASE ACTUALLY FIX THIS ERROR
 				
 			}
 			
