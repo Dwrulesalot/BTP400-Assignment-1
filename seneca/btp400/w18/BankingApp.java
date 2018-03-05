@@ -55,10 +55,15 @@ public class BankingApp{
 					
 					if(info.length==4){//checks if correct amount of info was inputed
 						Account newAccount = new Savings(info[0].trim(), info[1].trim(), info[2].trim(), Double.valueOf(info[3].trim()));
-						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
-						
-						System.out.println("\n+ Account Opened:");
-						displayAccount(newAccount);//need to code toString to print out like the example
+						if(yeet.addAccount(newAccount)){
+							
+							System.out.println("\n+ Account Opened:");
+							displayAccount(newAccount);//need to code toString to print out like the example
+						}
+						else{
+							errorFixer = scanner.nextLine();
+							System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means account with the same account ID is trying to be made
+						}
 					}
 					else{
 						errorFixer = scanner.nextLine();
@@ -72,10 +77,16 @@ public class BankingApp{
 					
 					if(info.length==5){//checks if correct amount of info was inputed
 						Account newAccount = new GIC(info[0].trim(), info[1].trim(), info[2].trim(),  Double.valueOf(info[3].trim()),  Double.valueOf(info[4].trim()));// name newAccount can be reused as there's no way the if statements could both be run since it's an else if
-						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
-						System.out.println("\n+ Account Opened:");
-						displayAccount(newAccount);//need to code toString to print out like the example
+						if(yeet.addAccount(newAccount)){
+							
+							System.out.println("\n+ Account Opened:");
+							displayAccount(newAccount);//need to code toString to print out like the example
+						}
+						else{
+							errorFixer = scanner.nextLine();
+							System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means account with the same account ID is trying to be made
+						}
 					}
 					else{
 						errorFixer = scanner.nextLine();
@@ -89,10 +100,16 @@ public class BankingApp{
 					
 					if(info.length==4){//checks if correct amount of info was inputed
 						Account newAccount = new Chequing(info[0].trim(), info[1].trim(), info[2].trim(), Double.valueOf(info[3].trim()));
-						yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount yeet.addAccount(newAccount);//not sure is i need the yeet.addAccount or if I just use addAccount
 						
-						System.out.println("\n+ Account Opened:");
-						displayAccount(newAccount);//need to code toString to print out like the example
+						if(yeet.addAccount(newAccount)){
+							
+							System.out.println("\n+ Account Opened:");
+							displayAccount(newAccount);//need to code toString to print out like the example
+						}
+						else{
+							errorFixer = scanner.nextLine();
+							System.out.println("*** FAILED: ACCOUNT CANNOT BE OPENED! ***\n");// This error means account with the same account ID is trying to be made
+						}
 					}
 					else{
 						errorFixer = scanner.nextLine();
