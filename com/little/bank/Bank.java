@@ -41,7 +41,6 @@ public class Bank{
 		
 		
 		for(int i=0; i<accounts.size();i++){//could also use .contains
-			//if (accounts.get(i).equals(newAccount)){//only works if everything equals the same value looking at the example he wants you to only check account #
 			if (accounts.get(i).getAccountNumber().equals(newAccount.getAccountNumber())){ 
 				return false;
 			}
