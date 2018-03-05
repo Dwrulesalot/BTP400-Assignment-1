@@ -1,20 +1,24 @@
 package org.finance;
 
 /**
+ * Specific type of account that has an extra variable that accounts for an annual interest rate
+ * 
  * @author Jonathan De Groot
  *
  */
 
 public class Savings extends Account
 {
-	private double interestRate; //Annual interest rate of savings account
+	private double interestRate; 
 
-	//3-arg constructor
 	/**
-	 * @param fN
-	 * @param aN
-	 * @param sB
-	 * @param iR
+	 * Three arguement Constructor that calls to account's three arguement constructor
+	 * 
+	 * @param fN full name of account holder
+	 * @param aN account number - will be unique
+	 * @param sB starting balance of account - the amount that account was opened with
+	 * @param iR interest rate - rate at which the account will increase by yearly
+	 * @see Account three arguement constructor
 	 */
 	public Savings(String fN, String aN, String sB, double iR)
 	{
@@ -22,19 +26,18 @@ public class Savings extends Account
 		interestRate = iR;
 	}
 
-	//0-arg constructor
 	/**
-	 * 
+	 * Zero arguement Constructor that calls to the Account's zero arguement constructor
 	 */
 	public Savings()
 	{
-		super(); //call to Account 0-arg constructor
+		super();
 		interestRate = 3.0f;
 	}
 
-	//Equals operator
-	/* (non-Javadoc)
-	 * @see Account#equals(java.lang.Object)
+	/* 
+	 * Equals operator checks to see if the 
+	 * @param acc object that is being to see it is of type savings of account
 	 */
 	public boolean equals(Object acc)
  	{
@@ -55,8 +58,9 @@ public class Savings extends Account
 		return result;
  	}
 
-	/* (non-Javadoc)
-	 * @see Account#toString()
+	/* 
+	 * Returns a string containing all the information contained in the saving's account, calling it's parent's toString before appending the extra information to it
+	 * @see Account's toString
 	 */
 	public String toString()
 	{
