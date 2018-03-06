@@ -62,6 +62,16 @@ public class ChequingTest {
 		
 		assertFalse(withdrawTest2);
 	}
-	
-	//still need to testif arraylist of transations works
+	/*
+	@Test //tests if arraylist of transations works
+	public void arrayListTest() {
+		Account arraylistTest = new GIC("", "", BigDecimal(10), 0.25);
+		
+		arraylistTest.withdraw("1");
+		
+		String stringTester = "-1"
+		String stringTest = arraylistTest.transactions.get(0);
+		
+		assertFalse(withdrawTest2);
+	}*/
 }
