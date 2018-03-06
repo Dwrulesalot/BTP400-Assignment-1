@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 
+import org.finance.Account;
 import org.finance.Chequing;
 import org.junit.Test;
 

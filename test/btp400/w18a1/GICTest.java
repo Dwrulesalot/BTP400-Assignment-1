@@ -2,6 +2,10 @@ package test.btp400.w18a1;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
+import org.finance.Account;
+import org.finance.GIC;
 import org.junit.Test;
 
 public class GICTest {

@@ -2,7 +2,13 @@ package test.btp400.w18a1;
 
 import static org.junit.Assert.*;
 
+import java.math.BigDecimal;
+
+import org.finance.Account;
+import org.finance.GIC;
 import org.junit.Test;
+
+import com.little.bank.Bank;
 
 public class BankTest {
 
@@ -38,7 +44,7 @@ public class BankTest {
 		
 		boolean addAccountTest2 = test.addAccount(addAccountTester2);
 		
-		assertFalse(addAccountTest1);
+		assertFalse(addAccountTest2);
 	}
 	
 	@Test //testing if account is properly removed
