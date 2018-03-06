@@ -38,7 +38,7 @@ public class BankTest {
 		
 		boolean addAccountTest2 = test.addAccount(addAccountTester2);
 		
-		assertFalse(addAccountTest1);
+		assertFalse(addAccountTest2);
 	}
 	
 	@Test //testing if account is properly removed
@@ -68,7 +68,7 @@ public class BankTest {
 		
 		test.addAccount(temp);
 		
-		assertEquals(tester, test.searchByBalance(10));
+		assertEquals(tester, test.searchByBalance("10"));
 		
 	}
 	
