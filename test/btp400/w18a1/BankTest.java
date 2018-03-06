@@ -74,7 +74,7 @@ public class BankTest {
 		
 		test.addAccount(temp);
 		
-		assertEquals(tester, test.searchByBalance(10));
+		assertEquals(tester, test.searchByBalance("10"));
 		
 	}
 	
