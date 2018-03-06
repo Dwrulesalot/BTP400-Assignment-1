@@ -33,13 +33,14 @@ public class GICTest {
 		assertFalse(test3);
 	}
 	
-	@Test //tests method balanceAtMaturity // still needs to be completed
+	@Test //tests method balanceAtMaturity 
 	public void test4() {
-		Account tester4 = new GIC("", "", BigDecimal(0), 1, 1.25);
+		Account tester4 = new GIC("", "", BigDecimal(5000), 1, 1.25);
 		
-		boolean test4 = tester4.withdraw("10000");
+		//answer for above tester should be as below
+		BigDecimal test4 = BigDecimal(16420.47);
 		
-		assertFalse(test4);
+		assertEquals(tester4.balanceAtMaturity(), test4);
 	}
 	
 }
